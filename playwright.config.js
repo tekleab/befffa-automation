@@ -9,9 +9,8 @@ module.exports = defineConfig({
     expect: { timeout: 15000 },
     // E2E ስለሆነ አንዱ ቴስት የሌላኛውን ዳታ ስለሚጠቀም parallel መሆን የለበትም
     fullyParallel: false,
-    reporter: [['html', { open: 'always' }], ['list']],
+    reporter: [['html', { open: 'never' }], ['list']], // CI ላይ 'always' አይሰራም፣ 'never' እናድርገው
     use: {
-        // በ .env ውስጥ ያለውን baseURL መጠቀም ይቻላል ወይም ይሄው ይቆይ
         baseURL: process.env.BASE_URL || 'http://157.180.20.112:4173',
         viewport: null,
         launchOptions: {
@@ -20,10 +19,11 @@ module.exports = defineConfig({
                 '--force-device-scale-factor=0.8'
             ],
         },
-        trace: 'on-first-retry',
-        video: 'on', // 🎥 ቪዲዮ ሁልጊዜ እንዲቀዳ መደረጉ ለ CI/CD በጣም አሪፍ ነው
-        screenshot: 'only-on-failure',
-        headless: false,
+        trace: 'on',
+        video: 'on',
+        screenshot: 'on',
+        // GitHub Actions ላይ እንዲሰራ የግድ true መሆን አለበት
+        headless: process.env.CI ? true : false,
     },
     projects: [{ name: 'chromium', use: { browserName: 'chromium' } }],
 });
