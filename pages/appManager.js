@@ -10,7 +10,6 @@ class AppManager {
     this.loginBtn = page.getByRole('button', { name: 'Login' });
 
     // --- Customer Module Selectors (NEW) ---
-    // ስህተት የፈጠረው Main Phone እዚህ ተስተካክሏል
     this.mainPhoneInput = page.getByRole('textbox', { name: /Main Phone/i });
     this.customerNameInput = page.getByRole('textbox', { name: 'Customer Name *' });
     this.customerTinInput = page.getByRole('textbox', { name: 'Customer TIN *' });
@@ -23,29 +22,37 @@ class AppManager {
   // --- LOGIN ---
   async login(email, pass) {
     await this.page.goto('/users/login');
+    // CI ላይ ኤለመንቱ እስኪታይ በትዕግስት እንዲጠብቅ ተደርጓል
+    await this.emailInput.waitFor({ state: 'visible', timeout: 30000 });
     await this.emailInput.fill(email);
     await this.passwordInput.fill(pass);
     await this.loginBtn.click();
-    await this.page.waitForURL('**/', { waitUntil: 'load', timeout: 30000 });
+    // load ብቻ ሳይሆን networkidle መጠበቁ ለ CI ይበልጥ አስተማማኝ ነው
+    await this.page.waitForURL('**/', { waitUntil: 'networkidle', timeout: 60000 });
   }
 
   /**
    * --- FILL ETHIOPIAN ADDRESS (NEW) ---
-   * ደንበኛ ሲመዘገብ ክልል፣ ዞን እና ወረዳን በቅደም ተከተል ለመሙላት
    */
   async fillEthiopianAddress(region, zone, woreda) {
     console.log(`Filling address: ${region} -> ${zone} -> ${woreda}`);
 
     // Select Region
-    await this.page.getByRole('combobox', { name: 'Region' }).selectOption({ label: region });
-    await this.page.waitForTimeout(1000); // Wait for Zone to load
+    const regionSelect = this.page.getByRole('combobox', { name: 'Region' });
+    await regionSelect.waitFor({ state: 'visible' });
+    await regionSelect.selectOption({ label: region });
+    await this.page.waitForTimeout(1500); // ለዞን መጫኛ ትንሽ ተጨማሪ ጊዜ
 
     // Select Zone
-    await this.page.getByRole('combobox', { name: 'Zone' }).selectOption({ label: zone });
-    await this.page.waitForTimeout(1000); // Wait for Woreda to load
+    const zoneSelect = this.page.getByRole('combobox', { name: 'Zone' });
+    await zoneSelect.waitFor({ state: 'visible' });
+    await zoneSelect.selectOption({ label: zone });
+    await this.page.waitForTimeout(1500); // ለወረዳ መጫኛ ትንሽ ተጨማሪ ጊዜ
 
     // Select Wereda
-    await this.page.getByRole('combobox', { name: 'Wereda' }).selectOption({ label: woreda });
+    const woredaSelect = this.page.getByRole('combobox', { name: 'Wereda' });
+    await woredaSelect.waitFor({ state: 'visible' });
+    await woredaSelect.selectOption({ label: woreda });
   }
 
   // --- SMART SEARCH ---
@@ -70,10 +77,10 @@ class AppManager {
       await searchInput.clear();
       await this.page.waitForTimeout(500);
       await searchInput.fill(text);
-      await this.page.waitForTimeout(1000);
+      await this.page.waitForTimeout(1500); // CI ላይ ሰርቨሩ እስኪመልስ
 
       try {
-        await resultLocator.waitFor({ state: 'visible', timeout: 5000 });
+        await resultLocator.waitFor({ state: 'visible', timeout: 7000 });
         await resultLocator.click();
         console.log(`Selection confirmed: ${text}`);
         return;
@@ -89,9 +96,9 @@ class AppManager {
   async waitForLoadingToFinish() {
     const skeleton = this.page.locator('.chakra-skeleton, .chakra-spinner, [data-testid="loading"]');
     try {
-      const isVisible = await skeleton.first().isVisible({ timeout: 1000 });
+      const isVisible = await skeleton.first().isVisible({ timeout: 2000 });
       if (isVisible) {
-        await skeleton.first().waitFor({ state: 'hidden', timeout: 20000 });
+        await skeleton.first().waitFor({ state: 'hidden', timeout: 30000 });
       }
     } catch { }
   }
@@ -131,16 +138,16 @@ class AppManager {
 
     for (let i = 0; i < 30; i++) {
       if (this.page.isClosed()) return;
-      await this.page.waitForTimeout(500);
+      await this.page.waitForTimeout(1000); // CI ላይ ቆም እያለ እንዲያይ
 
-      const approvedVisible = await this.page.locator(this.approvedStatus).first().isVisible({ timeout: 500 }).catch(() => false);
+      const approvedVisible = await this.page.locator(this.approvedStatus).first().isVisible({ timeout: 1000 }).catch(() => false);
       if (approvedVisible) {
         console.log("Status: Document Approved.");
         return;
       }
 
-      const modalAction = this.page.locator('section[role="dialog"] button').filter({ hasText: /^(Approve|Advance|Submit)$/i }).first();
-      if (await modalAction.isVisible({ timeout: 1000 }).catch(() => false)) {
+      const modalAction = this.page.locator('section[role="dialog"] button').filter({ hasText: /^(Approve|Advance|Submit|Yes|Confirm)$/i }).first();
+      if (await modalAction.isVisible({ timeout: 1500 }).catch(() => false)) {
         const btnText = await modalAction.innerText();
 
         if (lastClickedModalText === btnText) {
@@ -151,7 +158,7 @@ class AppManager {
         console.log(`Processing modal action: ${btnText}`);
         lastClickedModalText = btnText;
         await modalAction.click({ force: true });
-        await modalAction.waitFor({ state: 'hidden', timeout: 5000 }).catch(() => { });
+        await modalAction.waitFor({ state: 'hidden', timeout: 7000 }).catch(() => { });
         continue;
       } else {
         lastClickedModalText = null;
@@ -159,7 +166,7 @@ class AppManager {
 
       const targetButton = this.page.locator('button').filter({ hasText: /^(Submit For Review|Submit For Approver|Submit Forapprover|Advance|Approve|Submit)$/i }).first();
 
-      if (await targetButton.isVisible({ timeout: 1000 }).catch(() => false)) {
+      if (await targetButton.isVisible({ timeout: 2000 }).catch(() => false)) {
         const btnText = await targetButton.innerText();
 
         if (lastClickedTargetText === btnText) {
@@ -169,23 +176,23 @@ class AppManager {
 
         if (await targetButton.isDisabled()) {
           console.log(`Waiting for button activation: ${btnText}`);
-          await this.page.waitForTimeout(1000);
+          await this.page.waitForTimeout(2000);
           continue;
         }
 
         console.log(`Executing: ${btnText}`);
         lastClickedTargetText = btnText;
+        await targetButton.scrollIntoViewIfNeeded(); // ከስክሪን ውጭ ከሆነ እንዲታይ
         await targetButton.click({ force: true });
 
-        await targetButton.waitFor({ state: 'hidden', timeout: 5000 }).catch(() => { });
-
-        await this.page.waitForTimeout(1000);
+        await targetButton.waitFor({ state: 'hidden', timeout: 7000 }).catch(() => { });
+        await this.page.waitForTimeout(1500);
 
         if (btnText.includes("Submit")) {
           await this._handleReviewerSelection();
         }
       } else {
-        await this.page.waitForTimeout(1000);
+        await this.page.waitForTimeout(1500);
       }
     }
     console.warn('Process timed out: loop limit reached.');
@@ -220,17 +227,21 @@ class AppManager {
     const dayToSelect = parseInt(dateValue.split('/')[0], 10).toString();
     const datePickerBtn = this.page.locator('button:has(span.formatted-date)').nth(index);
 
+    // በ CI ላይ በተኑ መታየቱን ማረጋገጥ ወሳኝ ነው
+    await datePickerBtn.waitFor({ state: 'visible', timeout: 20000 });
+    await datePickerBtn.scrollIntoViewIfNeeded();
     await datePickerBtn.click();
-    await this.page.waitForTimeout(800);
+    await this.page.waitForTimeout(1000);
 
     const dayButton = this.page
       .locator('div[role="grid"] button')
       .getByText(dayToSelect, { exact: true })
       .first();
 
-    if (await dayButton.isVisible({ timeout: 3000 }).catch(() => false)) {
+    if (await dayButton.isVisible({ timeout: 5000 }).catch(() => false)) {
       await dayButton.click();
     } else {
+      // ካላንደሩ ካልተከፈተ በኪቦርድ ለመጻፍ ይሞክራል
       await this.page.keyboard.type(dateValue);
       await this.page.keyboard.press('Enter');
     }
