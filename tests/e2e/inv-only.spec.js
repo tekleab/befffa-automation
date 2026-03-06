@@ -6,7 +6,10 @@ test.describe('Isolated Invoice Creation', () => {
 
     test.beforeEach(async ({ page }) => {
         const app = new AppManager(page);
+        // 🚀 በ config ላይ ያለውን baseURL ይጠቀማል
         await app.login(process.env.BEFFA_USER, process.env.BEFFA_PASS);
+        // ሰርቨሩ ዳሽቦርዱን አዘጋጅቶ እስኪጨርስ ትንሽ ፋታ ስጠው
+        await page.waitForTimeout(5000);
     });
 
     test('Standalone Invoice Creation and Approval Flow', async ({ page }) => {
@@ -16,7 +19,10 @@ test.describe('Isolated Invoice Creation', () => {
         const { invoiceDate, dueDate } = app.getInvoiceDates();
 
         console.log("Execution: Initiating Isolated Invoice creation...");
-        await page.goto(`${process.env.BASE_URL}/receivables/invoices/new`);
+
+        // 🚀 ለውጥ 1: process.env.BASE_URL ከመጠቀም ይልቅ ቀጥታ path ተጠቀም
+        // ይህ በ config ላይ ያለውን 'http://157.180.20.112:4173' ከፊት ይቀጥላል
+        await page.goto('/receivables/invoices/new');
 
         // --- Customer Selection ---
         const customerSelector = page.getByRole('button', { name: 'Customer selector' });
@@ -28,7 +34,6 @@ test.describe('Isolated Invoice Creation', () => {
         await customerOption.click({ force: true });
 
         // --- Fill Dates ---
-        // ማሳሰቢያ፡ በ appManager.fillDate ውስጥም waitFor መኖሩን ያረጋግጡ
         await app.fillDate(0, invoiceDate);
         await app.fillDate(1, dueDate);
 
@@ -97,7 +102,8 @@ test.describe('Isolated Invoice Creation', () => {
         // --- Approval & Verification ---
         await app.handleApprovalFlow();
 
-        await page.goto(`${process.env.BASE_URL}/receivables/customers`);
+        // 🚀 ለውጥ 2: እዚህም ቢሆን ቀጥታ path ተጠቀም
+        await page.goto('/receivables/customers');
         const searchInput = page.locator('input[placeholder="Search for customers..."]');
         await searchInput.waitFor({ state: 'visible' });
         await searchInput.fill("Base Ethiopia");
