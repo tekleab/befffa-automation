@@ -7,7 +7,7 @@ require('dotenv').config();
 module.exports = defineConfig({
   testDir: './tests/e2e',
   
-  /* 1. ጠቅላላ የቴስት ጊዜ ገደብ (ወደ 5 ደቂቃ ዝቅ ተደርጓል - ለደህንነት) */
+  /* 1. ጠቅላላ የቴስት ጊዜ ገደብ (5 ደቂቃ) */
   timeout: 300000, 
   expect: { 
     timeout: 15000 
@@ -16,9 +16,8 @@ module.exports = defineConfig({
   /* 2. Parallel Execution Setup */
   fullyParallel: true,
 
-  // 🚀 CI (GitHub Actions) ላይ 4 ብሮውዘር በአንድ ጊዜ ያስነሳል
-  // ይህ ቴስቱን እጅግ ፈጣን ያደርገዋል
-  workers: process.env.CI ? 4 : undefined,
+  // 🚀 ወደ 3 ዝቅ ተደርጓል - ሰርቨሩ እንዳይጨናነቅ እና ቴስቱ እንዳይከሽፍ
+  workers: process.env.CI ? 3 : undefined,
 
   reporter: 'html',
 
@@ -35,7 +34,7 @@ module.exports = defineConfig({
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
 
-    /* 💡 ብዙ ዎርከሮች ሲኖሩ ሰርቨሩ ላይ ጫና ስለሚኖር ታይም-አውቱን ትንሽ ጨምረናል */
+    /* ፓራለል በሚሆንበት ጊዜ ሰርቨሩ ስለሚቆይ እነዚህ ታይም-አውቶች ወሳኝ ናቸው */
     actionTimeout: 40000,    
     navigationTimeout: 80000, 
   },
