@@ -3,6 +3,8 @@ const { AppManager } = require('../../pages/appManager');
 require('dotenv').config();
 
 test.describe('End-to-End Business Flow: SO -> Invoice -> Receipt', () => {
+    // 🚀 ቴስቶቹ አንዱ የሌላውን ውጤት ስለሚጠቀሙ በቅደም ተከተል እንዲሰሩ ያደርጋል
+    test.describe.configure({ mode: 'serial' });
 
     let sharedOrderNumber = '';
     let capturedCustomerName = '';
@@ -11,7 +13,7 @@ test.describe('End-to-End Business Flow: SO -> Invoice -> Receipt', () => {
     test.beforeEach(async ({ page }) => {
         const app = new AppManager(page);
         await app.login(process.env.BEFFA_USER, process.env.BEFFA_PASS);
-        // 🚀 ሎጊን እንደተደረገ ሰርቨሩ እንዲረጋጋ ጊዜ ስጠው
+        // Allow server to stabilize after login
         await page.waitForTimeout(5000);
     });
 
@@ -22,7 +24,7 @@ test.describe('End-to-End Business Flow: SO -> Invoice -> Receipt', () => {
         const { soDate } = app.getTransactionDates();
 
         console.log("Execution: Initiating Sales Order creation...");
-        // ✅ 404 እንዳይመጣ path ብቻ ተጠቀም
+        // Use relative path to avoid 404 errors
         await page.goto('/receivables/sale-orders/new');
 
         await app.fillDate(0, soDate);
@@ -58,7 +60,6 @@ test.describe('End-to-End Business Flow: SO -> Invoice -> Receipt', () => {
 
     // --- STEP 2: INVOICE GENERATION ---
     test('Step 2: Create Invoice from Sales Order', async ({ page }) => {
-        if (!sharedOrderNumber || !capturedCustomerName) test.skip();
         test.setTimeout(450000);
         const app = new AppManager(page);
         const { invoiceDate, dueDate } = app.getInvoiceDates();
@@ -120,7 +121,6 @@ test.describe('End-to-End Business Flow: SO -> Invoice -> Receipt', () => {
 
     // --- STEP 3: PAYMENT RECEIPT ---
     test('Step 3: Collect Receipt', async ({ page }) => {
-        if (!sharedInvoiceNumber) test.skip();
         test.setTimeout(450000);
         const app = new AppManager(page);
         const { soDate: receiptDate } = app.getTransactionDates();
@@ -190,6 +190,6 @@ async function addLineItem(page, app, data) {
     await page.keyboard.press('Escape');
 
     await page.getByRole('button', { name: /^Add$/, exact: true }).click();
-    await page.waitForTimeout(2000); // መስመሩ ተጨምሮ እስኪያልቅ
+    await page.waitForTimeout(2000); // Wait for line item processing to complete
     console.log(`Action: Line item ${data.item} confirmed.`);
 }
