@@ -104,7 +104,7 @@ export const CustomerSchema = z.object({
   name: z.string().optional(),
   customer_name: z.string().optional(),
   email: z.union([z.string(), z.null()]).optional(),
-  phone: z.union([z.string(), z.record(z.any()), z.null()]).optional(),
+  phone: z.union([z.string(), z.record(z.string(), z.any()), z.null()]).optional(),
   tin: z.union([z.string(), z.null()]).optional(),
   balance: z.union([z.number(), z.string()]).optional(),
   outstanding_balance: z.union([z.number(), z.string()]).optional()
@@ -115,10 +115,11 @@ export const VendorSchema = z.object({
   name: z.string().optional(),
   vendor_name: z.string().optional(),
   email: z.union([z.string(), z.null()]).optional(),
-  phone: z.union([z.string(), z.record(z.any()), z.null()]).optional(),
+  phone: z.union([z.string(), z.record(z.string(), z.any()), z.null()]).optional(),
   tin: z.union([z.string(), z.null()]).optional(),
   balance: z.union([z.number(), z.string()]).optional()
 }).passthrough();
+
 
 
 export const EmployeeSchema = z.object({

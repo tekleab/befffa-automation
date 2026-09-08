@@ -215,73 +215,107 @@ test.describe('Line Item & Miscellaneous Audit @sales @purchase @regression', ()
         }
 
         // Scope all selector buttons to form controls in the modal
-        const itemBtn = modal.locator('.chakra-form-control').filter({ hasText: /^Item/i }).locator('button').first()
-            .or(modal.locator('[aria-label*="Item" i], button:has-text("Item selector"), button:has-text("Select Item")').first());
-        const glBtn = modal.locator('.chakra-form-control').filter({ hasText: /G\/L Account/i }).locator('button').first()
-            .or(modal.locator('[aria-label*="G/L" i], button:has-text("G/L Account selector")').first());
-        const whBtn = modal.locator('.chakra-form-control').filter({ hasText: /Warehouse/i }).locator('button').first()
-            .or(modal.locator('[aria-label*="Warehouse" i], button:has-text("Warehouse selector")').first());
-        const locBtn = modal.locator('.chakra-form-control').filter({ hasText: /Location/i }).locator('button').first()
-            .or(modal.locator('[aria-label*="Location" i], button:has-text("Location selector")').first());
-        const taxBtn = modal.locator('.chakra-form-control').filter({ hasText: /Tax/i }).locator('button').first()
-            .or(modal.locator('[aria-label*="Tax" i], button:has-text("Tax selector")').first());
+        const itemBtn = modal.locator('.chakra-form-control, div[role="group"]')
+            .filter({ has: page.locator('label:has-text("Item")') })
+            .locator('button')
+            .or(modal.getByRole('button', { name: /Item selector|Select Item/i }))
+            .or(modal.locator('button:has-text("Item selector"), button:has-text("Select Item")'))
+            .first();
+        const glBtn = modal.locator('.chakra-form-control, div[role="group"]')
+            .filter({ has: page.locator('label').filter({ hasText: /G\/?L/i }) })
+            .locator('button')
+            .or(modal.getByRole('button', { name: /G\/L Account selector|Select G\/L|G\/L/i }))
+            .or(modal.locator('button:has-text("G/L Account selector"), button:has-text("Select G/L")'))
+            .first();
+        const whBtn = modal.locator('.chakra-form-control, div[role="group"]')
+            .filter({ has: page.locator('label:has-text("Warehouse")') })
+            .locator('button')
+            .or(modal.getByRole('button', { name: /Warehouse selector|Select Warehouse/i }))
+            .or(modal.locator('button:has-text("Warehouse selector")'))
+            .first();
+        const locBtn = modal.locator('.chakra-form-control, div[role="group"]')
+            .filter({ has: page.locator('label:has-text("Location")') })
+            .locator('button')
+            .or(modal.getByRole('button', { name: /Location selector|Select Location/i }))
+            .or(modal.locator('button:has-text("Location selector")'))
+            .first();
+        const taxBtn = modal.locator('.chakra-form-control, div[role="group"]')
+            .filter({ has: page.locator('label:has-text("Tax")') })
+            .locator('button')
+            .or(modal.getByRole('button', { name: /Tax selector|Select Tax/i }))
+            .or(modal.locator('button:has-text("Tax selector")'))
+            .first();
 
         const hasItemField = await itemBtn.isVisible({ timeout: 2000 }).catch(() => false);
 
         if (type === 'Item' || hasItemField) {
             const targetItemPrice = opts.unitPrice || '100';
 
-            // If a specific item name is provided, search for it directly so we get
-            // an item with a known selling_price > 0. Random selection risks picking
-            // legacy ERP items that have selling_price=0 and fail modal validation.
-            if (opts.itemName) {
-                await itemBtn.scrollIntoViewIfNeeded().catch(() => {});
-                await itemBtn.click({ force: true });
-                await page.waitForTimeout(800);
-                // The item dropdown opens as a portal overlay OUTSIDE the modal.
-                // smartSearch(null) would search the modal itself and type into the
-                // price input instead. We must scope to the dropdown overlay.
-                const itemDropdown = page.locator(
-                    '.chakra-menu__menu-list, [role="listbox"], .chakra-popover__content, [role="menu"]'
-                ).filter({ visible: true }).last();
-                const dropdownVisible = await itemDropdown.isVisible({ timeout: 3000 }).catch(() => false);
-                if (dropdownVisible) {
-                    // Type into the search input inside the dropdown
-                    const dropdownSearch = itemDropdown.locator('input').first();
-                    if (await dropdownSearch.isVisible({ timeout: 2000 }).catch(() => false)) {
-                        await dropdownSearch.fill(opts.itemName);
-                        await page.waitForTimeout(1500);
-                        // Click the first matching option
-                        const option = itemDropdown.locator('[role="option"], [role="menuitem"], .chakra-menu__menuitem, li, tr')
-                            .filter({ hasText: opts.itemName }).first();
-                        const anyOption = itemDropdown.locator('[role="option"], [role="menuitem"], .chakra-menu__menuitem, li, tr')
-                            .filter({ visible: true }).filter({ hasNotText: /Clear|Search/i }).first();
-                        if (await option.isVisible({ timeout: 2500 }).catch(() => false)) {
-                            await option.click({ force: true });
-                        } else if (await anyOption.isVisible({ timeout: 2500 }).catch(() => false)) {
-                            await anyOption.click({ force: true });
-                        } else {
-                            await page.keyboard.press('ArrowDown');
-                            await page.keyboard.press('Enter');
-                        }
-                    } else {
-                        // No search input — click matching text directly
-                        const option = itemDropdown.getByText(opts.itemName, { exact: false }).first();
-                        if (await option.isVisible({ timeout: 2000 }).catch(() => false)) {
-                            await option.click({ force: true });
-                        }
-                    }
-                } else {
-                    // Dropdown didn't open as overlay — fall back to smartSearch scoped to modal
-                    await app.smartSearch(modal, opts.itemName);
-                }
-            } else {
-                await app.selectRandomOption(itemBtn, 'Item');
-            }
-            // Wait for ERP to finish async reset of price field after item selection
+            const isItemSelected = async (): Promise<boolean> => {
+                const text = (await itemBtn.textContent().catch(() => ''))?.trim() || '';
+                return text.length > 0 && !/^item selector$/i.test(text) && !/^select item$/i.test(text);
+            };
+
+            // 1. Select Item FIRST (ERP clears warehouse/location on item change)
+            await itemBtn.scrollIntoViewIfNeeded().catch(() => {});
+            await itemBtn.click({ force: true }).catch(() => itemBtn.evaluate((n: HTMLElement) => n.click()));
             await page.waitForTimeout(1000);
 
-            // Inspect Selling Price / Unit Price field state and fill price
+            const itemDropdown = page.locator(
+                '.chakra-menu__menu-list, [role="listbox"], .chakra-popover__content, [role="menu"], [role="dialog"]'
+            ).filter({ visible: true }).last();
+            const dropdownVisible = await itemDropdown.isVisible({ timeout: 3000 }).catch(() => false);
+
+            if (dropdownVisible) {
+                const dropdownSearch = itemDropdown.locator('input[placeholder*="Search" i], input[name="item_id"], input').first();
+                if (opts.itemName && await dropdownSearch.isVisible({ timeout: 1500 }).catch(() => false)) {
+                    await dropdownSearch.focus().catch(() => {});
+                    await dropdownSearch.fill(opts.itemName);
+                    await page.waitForTimeout(1500);
+                }
+
+                // Match button options in Chakra popover (excluding Clear button)
+                const optionButtons = itemDropdown.locator('button:not(:has-text("Clear")), [role="option"], [role="menuitem"], label.chakra-checkbox')
+                    .filter({ visible: true });
+
+                let targetOption = opts.itemName
+                    ? optionButtons.filter({ hasText: opts.itemName }).first()
+                    : optionButtons.first();
+
+                if (!await targetOption.isVisible({ timeout: 2000 }).catch(() => false)) {
+                    targetOption = optionButtons.first();
+                }
+
+                if (await targetOption.isVisible({ timeout: 2000 }).catch(() => false)) {
+                    const optText = await targetOption.textContent().catch(() => '');
+                    console.log(`[ITEM MODAL] Clicking item option: "${optText?.trim()}"`);
+                    await targetOption.click({ force: true }).catch(() => targetOption.evaluate((n: HTMLElement) => n.click()));
+                }
+                await page.waitForTimeout(600);
+                if (await itemDropdown.isVisible().catch(() => false)) {
+                    await page.keyboard.press('Escape').catch(() => {});
+                }
+            }
+
+            console.log(`[ITEM MODAL] Item selected status: ${await isItemSelected()} | Button text: "${await itemBtn.textContent().catch(() => '')}"`);
+
+            // Fallback if item still not selected
+            if (!(await isItemSelected())) {
+                await app.selectRandomOption(itemBtn, 'Item');
+            }
+            await page.waitForTimeout(800);
+
+            // 2. Select Warehouse & Location AFTER Item selection
+            if (await whBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
+                await app.selectRandomOption(whBtn, 'Warehouse', true);
+                await page.waitForTimeout(400);
+            }
+            if (await locBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
+                await app.selectRandomOption(locBtn, 'Location', true);
+                await page.waitForTimeout(400);
+            }
+
+            // 3. Inspect Selling Price / Unit Price field state and fill price if enabled
             const priceInput = modal.locator('.chakra-form-control').filter({
                 hasText: /Selling Price|Unit Price|Before Tax|^Price/i
             }).locator('input').first();
@@ -289,9 +323,6 @@ test.describe('Line Item & Miscellaneous Audit @sales @purchase @regression', ()
             if (await priceInput.isVisible({ timeout: 2000 }).catch(() => false)) {
                 await priceInput.waitFor({ state: 'attached', timeout: 3000 }).catch(() => { });
 
-                // Use React's nativeInputValueSetter to properly update controlled input state,
-                // then dispatch both input and change events so React re-renders the field.
-                // Plain fill() / evaluate(el.value=) do not trigger React's synthetic event system.
                 const forceReactFill = async (value: string) => {
                     await priceInput.evaluate((el: HTMLInputElement, v: string) => {
                         const nativeSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set;
@@ -307,39 +338,28 @@ test.describe('Line Item & Miscellaneous Audit @sales @purchase @regression', ()
                     await page.waitForTimeout(200);
                 };
 
-                await priceInput.click({ clickCount: 3, force: true }).catch(() => { });
-                await forceReactFill(targetItemPrice);
-
-                // Verify — if still 0, retry once more after a short wait
-                const updatedVal = parseFloat(await priceInput.inputValue().catch(() => '0')) || 0;
-                if (updatedVal <= 0) {
-                    await page.waitForTimeout(500);
+                const isPriceDisabled = await priceInput.isDisabled().catch(() => false);
+                if (!isPriceDisabled) {
                     await priceInput.click({ clickCount: 3, force: true }).catch(() => { });
                     await forceReactFill(targetItemPrice);
-                    console.log(`[ITEM MODAL] ⚠️ Price re-forced via React setter to: ${targetItemPrice}`);
-                } else {
-                    console.log(`[ITEM MODAL] ✅ Price confirmed: $${updatedVal}`);
                 }
             }
 
-
-            // Select Warehouse, Location & G/L Account
-            if (await whBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
-                await app.selectRandomOption(whBtn, 'Warehouse', true);
-                await page.waitForTimeout(400);
-            }
-            if (await locBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
-                await app.selectRandomOption(locBtn, 'Location', true);
-                await page.waitForTimeout(400);
-            }
-            if (await glBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
-                await app.selectRandomOption(glBtn, 'G/L Account', true);
+            // 4. Select G/L Account
+            const isGlVisible = await glBtn.isVisible({ timeout: 2000 }).catch(() => false);
+            console.log(`[MODAL] Item branch - G/L selector visible: ${isGlVisible}`);
+            if (isGlVisible) {
+                await glBtn.scrollIntoViewIfNeeded().catch(() => {});
+                await app.selectRandomOption(glBtn, 'G/L Account', false);
                 await page.waitForTimeout(400);
             }
         } else {
             // Miscellaneous modal
-            if (await glBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
-                await app.selectRandomOption(glBtn, 'G/L Account', true);
+            const isGlVisible = await glBtn.isVisible({ timeout: 2000 }).catch(() => false);
+            console.log(`[MODAL] Misc branch - G/L selector visible: ${isGlVisible}`);
+            if (isGlVisible) {
+                await glBtn.scrollIntoViewIfNeeded().catch(() => {});
+                await app.selectRandomOption(glBtn, 'G/L Account', false);
                 await page.waitForTimeout(400);
             }
 

@@ -372,7 +372,7 @@ export class PurchaseAPI extends BasePage {
     let resolvedVendorId = vendorId;
     if (!resolvedVendorId) {
       // Use same pattern as createPurchaseOrderAPI which works reliably
-      const vendorResp = await this.safeGet(`${apiBase}/vendors?page=1&pageSize=10`, { headers });
+      const vendorResp = await this.safeGet(`${apiBase}/vendors?page=1&pageSize=10&${qs}`, { headers });
       const vendorData = await safeJson(vendorResp, 'Vendor Discovery');
       const vendor = vendorData.items?.[0] || vendorData.data?.[0];
       if (!vendor) throw new Error('Bill Discovery Failed: No vendors found in current company.');
@@ -819,10 +819,12 @@ export class PurchaseAPI extends BasePage {
     const acctData = await safeJson(acctResp, 'Accounts Discovery');
     const allAccounts = acctData.items || acctData.data || [];
     const cashAccount =
+      allAccounts.find((a: any) => a.name?.toLowerCase().includes('bank') && parseFloat(a.balance || '0') > 0) ||
+      allAccounts.find((a: any) => a.name?.toLowerCase().includes('cbe')) ||
       allAccounts.find((a: any) => a.name?.toLowerCase().includes('branch')) ||
       allAccounts.find((a: any) => (a.account_id || a.code || a.account_code) === '1002') ||
-      allAccounts.find((a: any) => a.name?.toLowerCase().includes('petty')) ||
-      allAccounts.find((a: any) => (a.type || a.account_type || '').toLowerCase().includes('cash') || (a.type || a.account_type || '').toLowerCase().includes('bank')) ||
+      allAccounts.find((a: any) => (a.type || a.account_type || '').toLowerCase().includes('bank')) ||
+      allAccounts.find((a: any) => (a.type || a.account_type || '').toLowerCase().includes('cash')) ||
       allAccounts[0];
 
     // 2. Discover Currency

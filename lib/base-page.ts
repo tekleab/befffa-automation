@@ -63,8 +63,9 @@ export class BasePage {
     this.customerKebeleInput = page.locator('#kebele');
     this.customerSalesAccountInput = page.locator('#sales_account_id');
     this.createCustomerBtn = page.locator('button:has-text("Create customer")');
-    this.editCustomerBtn = page.locator('button:has-text("Edit")').first();
-    this.removeCustomerBtn = page.locator('button:has-text("Remove")');
+    this.editCustomerBtn = page.getByRole('button', { name: /^edit$/i });
+    this.removeCustomerBtn = page.getByRole('button', { name: /^remove$/i });
+
 
     // Status and Button Selectors
     this.approvedStatus = 'span.css-1ny2kle:has-text("Approved"), span:has-text("Approved")';
@@ -1087,14 +1088,14 @@ ${curlCmd}
   }
 
   async selectRandomOption(selector: Locator, labelName: string, isOptional: boolean = false): Promise<number> {
-    const optionSelector = '[role="checkbox"], .chakra-checkbox, [role="option"], [role="menuitem"], .chakra-menu__menuitem, tbody tr, tr:not(:first-child)';
+    const optionSelector = '[role="checkbox"], .chakra-checkbox, [role="option"], [role="menuitem"], .chakra-menu__menuitem, tbody tr, tr:not(:first-child), tr[role="row"], button:not(:has-text("Clear")), [role="button"]';
 
     await this.startTacticalTimer(); // Start Tactical UI Timer
 
     for (let i = 0; i < 3; i++) {
       try {
-        await selector.scrollIntoViewIfNeeded();
-        await selector.click({ timeout: 5000, force: true });
+        await selector.scrollIntoViewIfNeeded().catch(() => {});
+        await selector.click({ timeout: 5000, force: true }).catch(() => selector.evaluate((el: HTMLElement) => el.click()));
         await this.page.waitForTimeout(1000);
         // Scope to the topmost visible overlay/dropdown to avoid counting items from other open menus
         const overlay = this.page.locator(
@@ -1105,21 +1106,32 @@ ${curlCmd}
         if (overlayVisible) {
           const searchInput = overlay.locator('input').first();
           if (await searchInput.isVisible({ timeout: 800 }).catch(() => false)) {
-            await searchInput.focus().catch(() => {});
-            await searchInput.fill('').catch(() => {});
+            const currentVal = await searchInput.inputValue().catch(() => '');
+            if (currentVal) {
+              await searchInput.focus().catch(() => {});
+              await searchInput.fill('').catch(() => {});
+              await this.page.waitForTimeout(500);
+            }
           }
         }
 
         const options = overlayVisible
           ? overlay.locator(optionSelector).filter({ visible: true }).filter({ hasNotText: /^(Clear|No more items)$/i })
           : this.page.locator(optionSelector).filter({ visible: true }).filter({ hasNotText: /^(Clear|No more items)$/i });
-        // Wait for at least one option to appear before counting
-        await options.first().waitFor({ state: 'visible', timeout: 5000 }).catch(() => { });
+        // Wait up to 15s for at least one option to appear (handles heavy backend queries)
+        await options.first().waitFor({ state: 'visible', timeout: 15000 }).catch(() => { });
         const count = await options.count();
+        console.log(`[SELECT-OPTION] ${labelName} (attempt ${i + 1}): overlayVisible=${overlayVisible}, count=${count}`);
         if (count > 0) {
           const randomIndex = Math.floor(Math.random() * count);
           const target = options.nth(randomIndex);
-          await target.click({ force: true }).catch(() => target.evaluate((node: HTMLElement) => node.click()));
+          await target.scrollIntoViewIfNeeded().catch(() => {});
+          const childCell = target.locator('td, [role="button"], button, p, span').first();
+          if (await childCell.isVisible({ timeout: 500 }).catch(() => false)) {
+            await childCell.click({ force: true }).catch(() => childCell.evaluate((node: HTMLElement) => node.click()));
+          } else {
+            await target.click({ force: true }).catch(() => target.evaluate((node: HTMLElement) => node.click()));
+          }
           await this.page.waitForTimeout(500);
           if (await overlay.isVisible().catch(() => false)) {
             await this.page.keyboard.press('Escape').catch(() => { });
@@ -1133,6 +1145,7 @@ ${curlCmd}
           if (isOptional) return 0;
         }
       } catch (e: any) {
+        console.log(`[SELECT-OPTION] ${labelName} attempt ${i + 1} caught error: ${e.message}`);
         await this.page.keyboard.press('Escape').catch(() => { });
         if (
           e.message?.includes('Target page') ||

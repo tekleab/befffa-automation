@@ -61,8 +61,9 @@ export class AppManager {
     this.customerTypeSelect = page.locator('#type-select-id');
     this.customerPhoneInput = page.locator('input[name="phone.p1"]');
     this.createCustomerBtn = page.locator('button:has-text("Create Customer")');
-    this.editCustomerBtn = page.locator('button:has-text("Edit")');
-    this.removeCustomerBtn = page.locator('button:has-text("Remove")');
+    this.editCustomerBtn = page.getByRole('button', { name: /^edit$/i });
+    this.removeCustomerBtn = page.getByRole('button', { name: /^remove$/i });
+
 
     // Status and Button Selectors
     this.approvedStatus = 'span.css-1ny2kle:has-text("Approved"), span:has-text("Approved")';
