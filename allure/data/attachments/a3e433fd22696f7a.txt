@@ -1,6 +1,0 @@
-[TEST 1] Discovering existing Invoice for Detail Tab Audit...
-[TEST 1] Found existing Invoice ID: a910da3e-c682-4540-8f7f-df4ce7b6ac3d
-[TEST 1] Navigating to Invoice Detail Page: /receivables/invoices/a910da3e-c682-4540-8f7f-df4ce7b6ac3d/detail
-[INITIAL LOAD] API Requests fired on initial page load: 0
-[TABS FOUND] Invoice detail has 0 tabs.
-[PASS] Test 1 — Invoice Detail Tab On-Demand Hook Fetching Verified!

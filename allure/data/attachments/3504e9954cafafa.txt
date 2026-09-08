@@ -1,0 +1,5 @@
+[TEST 3] Discovering existing Sales Order for Detail Tab Audit...
+[TEST 3] Found existing Sales Order ID: 0b30fedf-0a1e-43d4-acec-db097a64e7ff
+[TEST 3] Navigating to Sales Order Detail Page: /receivables/sales-orders/0b30fedf-0a1e-43d4-acec-db097a64e7ff/detail
+[TABS FOUND] SO detail has 0 tabs.
+[PASS] Test 3 — Sales Order Detail Tab On-Demand Hook Fetching Verified!

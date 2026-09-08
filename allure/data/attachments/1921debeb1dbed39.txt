@@ -1,0 +1,4 @@
+12:41:09 [PERFORMANCE] API - Auth API Verification: 351.30ms
+[AUTH] Session token and local storage injected successfully.
+[PURCHASE MODULE AUDIT] Testing Purchase Order & Bill Error Visibility...
+[PURCHASE AUDIT] Visible Errors Captured: NONE (Silent Validation / Disabled Button)

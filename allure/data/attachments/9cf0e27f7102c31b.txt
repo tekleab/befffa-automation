@@ -1,3 +1,0 @@
-10:07:16 [PERFORMANCE] API - Auth API Verification: 423.74ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] 20 employees found. Sample: "Abebayehu" | inactive

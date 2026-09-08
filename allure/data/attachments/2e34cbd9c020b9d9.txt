@@ -1,0 +1,5 @@
+[DateHelper] _fromEnv: EC year 2019 → using 2026-09-08
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+12:38:04 [PERFORMANCE] API - Auth API Verification: 197.46ms
+[AUTH] Session token and local storage injected successfully.
+[PASS] 20 employees found. Sample: "Abebayehu" | inactive

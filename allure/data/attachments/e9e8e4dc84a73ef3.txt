@@ -1,0 +1,12 @@
+12:40:59 [PERFORMANCE] API - Auth API Verification: 313.01ms
+[AUTH] Session token and local storage injected successfully.
+[TICKET 5] Provisioning Sales Order for Detail DTO Audit...
+[ADJ] quantity | qty=10 @ $250 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/009223 (ID: b12e1a6d-69e3-41c8-a7a7-6945a84ef034)
+12:41:05 [INFO] Advancing inventory-adjustments "b12e1a6d-69e3-41c8-a7a7-6945a84ef034"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 10...
+[SUCCESS] API Confirmed: Stock correctly reached 10.
+[FRESH ITEM] Created: FIFO-Item-1788871261107 (b6030dbe-b554-460f-8987-7799eb27b401) | method=FIFO | stock=10@$250 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+[TICKET 5] SO Created: SO/2026/09/08/001318 (b68067a2-ad1c-433d-951f-4d1a69bf87f0)
+[SO DTO CONTRACT]: {"accounts_receivable":{"account_id":"1205","id":"bd0e0b51-b32d-4925-b442-05a3e63abf16","name":"Accounts Receivable"},"currency":{"code":"BRR","id":"ffbf8ef2-bffe-4c52-b588-17472d6baeb3","name":"Birr","rate":1},"current_approval_step":{"can_edit":true,"color":"#7D838D","description":"Initial State",
+[PASS] Ticket 5 — Sales Order Detail DTO Schema Validated!

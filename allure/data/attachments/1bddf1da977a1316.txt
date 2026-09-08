@@ -1,2 +1,0 @@
-10:08:24 [PERFORMANCE] API - Auth API Verification: 425.40ms
-[AUTH] Session token and local storage injected successfully.

@@ -1,0 +1,4 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+12:40:13 [PERFORMANCE] API - Auth API Verification: 293.47ms
+[AUTH] Session token and local storage injected successfully.
+[PASS] Customer (243b9845-e056-48ce-924d-6f233d99c574) matches CustomerSchema contract

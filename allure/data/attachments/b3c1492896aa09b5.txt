@@ -1,4 +1,0 @@
-[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
-10:07:24 [PERFORMANCE] API - Auth API Verification: 296.26ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Employee created: EMP/2026/09/08/000603 | id: 55774e20-8e02-4dfb-bccc-2a380684e627 | status: inactive

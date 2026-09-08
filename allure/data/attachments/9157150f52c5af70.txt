@@ -1,0 +1,43 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+12:43:23 [PERFORMANCE] API - Auth API Verification: 361.61ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+12:43:24 [INFO] [STOCK_TOPUP] Injecting 70 units for item d934fa4f-05e7-4b17-bf75-9a904236496a...
+[ADJ] quantity | qty=70 @ $100 | current=50 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/009234 (ID: de01b17b-1b5d-4c1a-83d7-3fb7f7cb50ac)
+12:43:25 [INFO] Advancing inventory-adjustments "de01b17b-1b5d-4c1a-83d7-3fb7f7cb50ac"...
+12:43:30 [INFO] [STOCK_TOPUP] Injected 70 units for item d934fa4f-05e7-4b17-bf75-9a904236496a (adj ADJ/2026/09/08/009234)
+[INV-UI-03] ✅ Pre-topped itemA stock to 50 units
+[API PRE-CAPTURE] Using guaranteed-stock item "FIFO-Item-1788871310276" @ $100
+12:43:35 [INFO] Picking date: "Invoice Date" → target 2026-9-8
+12:43:37 [WARN] "Invoice Date" — target day 8 not found, picked early enabled: 1.
+12:43:37 [PERFORMANCE] UI - Pick Date: Invoice Date: 2136.17ms
+12:43:37 [INFO] Picking date: "Due Date" → target 2026-9-8
+12:43:39 [WARN] "Due Date" — target day 8 not found, picked early enabled: 1.
+12:43:39 [PERFORMANCE] UI - Pick Date: Due Date: 2087.19ms
+[SELECT-OPTION] Customer (attempt 1): overlayVisible=true, count=21
+12:43:42 [PERFORMANCE] UI - Random Selection: Customer: 2176.56ms
+[SELECT-OPTION] Accounts Receivable (attempt 1): overlayVisible=true, count=21
+12:43:44 [PERFORMANCE] UI - Random Selection: Accounts Receivable: 2556.35ms
+[CURRENCY] Selected via button: Birr
+[ITEM MODAL] Clicking item option: "FIFO-Item-1788871310276"
+[ITEM MODAL] Item selected status: true | Button text: "FIFO-Item-1788871310276 — $100.00"
+[SELECT-OPTION] Warehouse (attempt 1): overlayVisible=true, count=4
+12:43:53 [PERFORMANCE] UI - Random Selection: Warehouse: 2023.53ms
+[SELECT-OPTION] Location (attempt 1): overlayVisible=true, count=4
+12:43:55 [PERFORMANCE] UI - Random Selection: Location: 1975.56ms
+[MODAL] Item branch - G/L selector visible: true
+[SELECT-OPTION] G/L Account (attempt 1): overlayVisible=true, count=20
+12:43:58 [PERFORMANCE] UI - Random Selection: G/L Account: 2098.51ms
+[MODAL] Filled Quantity: 3
+[SELECT-OPTION] Tax (attempt 1): overlayVisible=true, count=8
+12:44:02 [PERFORMANCE] UI - Random Selection: Tax: 3246.18ms
+[MODAL] Item line item added successfully
+[MODAL] Misc branch - G/L selector visible: true
+[SELECT-OPTION] G/L Account (attempt 1): overlayVisible=true, count=20
+12:44:06 [PERFORMANCE] UI - Random Selection: G/L Account: 2175.43ms
+[MODAL] Filled Miscellaneous Price: 200
+[SELECT-OPTION] Tax (attempt 1): overlayVisible=true, count=8
+12:44:10 [PERFORMANCE] UI - Random Selection: Tax: 2663.11ms
+[MODAL] Miscellaneous line item added successfully
+[AUDIT] 45 lines visible in Invoice form

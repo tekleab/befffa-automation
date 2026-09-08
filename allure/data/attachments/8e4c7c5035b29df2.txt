@@ -1,5 +1,0 @@
-10:10:33 [PERFORMANCE] API - Auth API Verification: 405.74ms
-[AUTH] Session token and local storage injected successfully.
-[SALES MODULE AUDIT] Testing Sales Order & Invoice Error Visibility...
-[SALES AUDIT] Sales Order Submit button initial state: disabled=true
-[SALES AUDIT] Visible Errors Captured: NONE (Silent Validation / Disabled Button)

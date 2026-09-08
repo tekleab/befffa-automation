@@ -1,5 +1,0 @@
-10:10:10 [PERFORMANCE] API - Auth API Verification: 420.20ms
-[AUTH] Session token and local storage injected successfully.
-[BDEV-1138] Testing Payables Detail Pagination for Vendor Bills...
-[BDEV-1138] Vendor Bills returned 5 items | Total: 803
-[PASS] BDEV-1138 Payables Detail Pagination verified (Total Bills: 803)

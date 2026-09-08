@@ -1,0 +1,14 @@
+12:41:00 [PERFORMANCE] API - Auth API Verification: 315.38ms
+[AUTH] Session token and local storage injected successfully.
+[TICKET 6] Auditing General Ledger Module DTO API Contracts...
+[GL DTO] GET /accounts Status: 200
+[GL ACCOUNT DTO SAMPLE]: {"account_id":"1005","balance":15952488.648095237,"id":"e8b0574b-87e1-44fd-a021-cb26ddc0b9c0","name":"Cash at Bank - CBE","type":"Cash & Cash Equivalents"}
+[GL DTO] GET /account/e8b0574b-87e1-44fd-a021-cb26ddc0b9c0 Status: 200
+[GL ACCOUNT DETAIL DTO]: {"account_id":"1005","balance":15952488.648095237,"description":"","id":"e8b0574b-87e1-44fd-a021-cb26ddc0b9c0","key_flex_field_value":{"segments":null},"name":"Cash at Bank - CBE","type":{"id":5,"name":"Cash & Cash Equivalents","type":"current asset"}}
+[GL DTO] GET /general-journals Status: 200
+[GL GENERAL JOURNAL DTO SAMPLE]: {"created_at":"2026-08-17T11:48:42.90081Z","credit":9,"current_approval_step":{"approval_flow":null,"approval_flow_id":"c1f5a94c-232d-4a51-81c6-0b9fe7bb92d3","can_edit":true,"color":"#7D838D","created_at":"2026-07-27T11:53:31.579249Z","description":"Initial State","id":"d38b8923-2429-462d-bfb4-f4b87
+[GL DTO] GET /general-journals/85c8a852-ecca-4b8c-b880-f06d920beb8b Status: 200
+[GL GENERAL JOURNAL DETAIL DTO]: {"created_at":"2026-08-17T11:48:42.90081Z","credit":9,"current_approval_step":{"approval_flow":null,"approval_flow_id":"c1f5a94c-232d-4a51-81c6-0b9fe7bb92d3","can_edit":true,"color":"#7D838D","created_at":"2026-07-27T11:53:31.579249Z","description":"Initial State","id":"d38b8923-2429-462d-bfb4-f4b87
+[GL DTO] GET /general-journals/85c8a852-ecca-4b8c-b880-f06d920beb8b/entries Status: 200
+[GL JOURNAL ENTRY DTO SAMPLE]: {"account":{"account_id":"1002","id":"b2fd8a4b-199a-417b-92d8-a8e4ec7151ba","name":"Cash - Branch Office"},"credit":9,"debit":0,"description":"","id":"27a4b12f-e203-4389-bab0-f034ad43eedb"}
+[PASS] Ticket 6 — General Ledger Module DTO Contract Audit Completed!

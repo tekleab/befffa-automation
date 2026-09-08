@@ -1,3 +1,0 @@
-10:07:20 [PERFORMANCE] API - Auth API Verification: 539.02ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Org Chart page loaded — url: http://168.119.175.142:4173/human-resources/org-charts

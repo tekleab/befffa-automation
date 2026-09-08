@@ -1,0 +1,5 @@
+[ERROR] Invoice API Failed: 400 - {
+	"code": 400,
+	"message": "sales order balance already exhausted: sales order item 7f7d8188-57b7-465f-b135-1b3315aedc92 ordered 10, already released 0, requested 50"
+}
+

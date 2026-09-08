@@ -1,0 +1,5 @@
+12:40:41 [PERFORMANCE] API - Auth API Verification: 304.73ms
+[AUTH] Session token and local storage injected successfully.
+[BDEV-1137] Testing Receivables Detail Pagination for Customer 243b9845-e056-48ce-924d-6f233d99c574...
+[BDEV-1137] Customer Invoices returned 5 items | Total: 883
+[PASS] BDEV-1137 Receivables Detail Pagination verified (Total Invoices: 883)

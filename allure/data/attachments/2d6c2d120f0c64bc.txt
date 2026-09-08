@@ -1,0 +1,18 @@
+12:47:29 [PERFORMANCE] API - Auth API Verification: 341.49ms
+[AUTH] Session token and local storage injected successfully.
+[STEP 1] Navigating to SO-to-Invoice form with invalid SO ID...
+
+  ┌───────────────────────────────────────────────────────────────────────────────┐
+  │ SO-to-Invoice: Error State Boundary                                         │
+  ├───────────────────────────────────────────────────────────────────────────────┤
+  │ Tested SO ID                       │ 00000000-dead-beef-0000-111111111111   │
+  │ Target Route                       │ /receivables/sales-orders/00000000-de… │
+  │ Current URL                        │ http://168.119.175.142:4173/receivabl… │
+  │ Error Banner/Text Present          │ Yes                                    │
+  │ Alert Role Present                 │ No                                     │
+  │ Redirected / 404 Handled           │ Yes                                    │
+  │ Query Boundary Verdict             │ Handled Gracefully                     │
+  ├───────────────────────────────────────────────────────────────────────────────┤
+  │ Result                             │ ✓ PASS — Error state handled           │
+  └───────────────────────────────────────────────────────────────────────────────┘
+

@@ -1,0 +1,17 @@
+[ADJ] quantity | qty=30 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/009215 (ID: a42c773b-969b-41d0-8f8b-1557a48c944c)
+12:37:23 [INFO] Advancing inventory-adjustments "a42c773b-969b-41d0-8f8b-1557a48c944c"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 30...
+[SUCCESS] API Confirmed: Stock correctly reached 30.
+[FRESH ITEM] Created: FIFO-Item-1788871039852 (521ae2ba-2f17-49f9-8eda-e10554f77c88) | method=FIFO | stock=30@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+[DEST] Using system location: 87d66495-1719-4402-9b0d-147859d3bc6c | Warehouse: ae638681-f2ae-492a-898e-edab3be6186b
+[SETUP] Item: "FIFO-Item-1788871039852" | Src stock: 30 | Dest stock: 0
+[SETUP] Src loc: 539ab667-5559-4db7-8cd4-24f797d57ebb | Dest loc: 87d66495-1719-4402-9b0d-147859d3bc6c
+[TC-05] Excess qty (10029) response: 422 | {
+	"code": 422,
+	"details": {
+		"quantity": [
+			"Insufficient quantity available at the starting location"
+		]
+	},
+	"me

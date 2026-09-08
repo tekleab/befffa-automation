@@ -1,0 +1,11 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+12:48:02 [PERFORMANCE] API - Auth API Verification: 223.97ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+12:48:03 [INFO] Advancing invoices "db123c2c-dd01-4fb1-9ae6-ec80c1b27a00"...
+[RECEIPT PRE-FLIGHT] Invoice outstanding=200 | Requested receipt amount=200
+[RECEIPT] amount=200 | invoice=db123c2c... | year=2019
+[SUCCESS] Receipt created on attempt 1: RCPT/2026/09/08/001351
+12:48:10 [INFO] Advancing receipts "a2af3762-3a63-4685-b126-dfd19257ebd0"...
+[AUDIT] Full receipt $200 → Received: $200 | Remaining: $0
+[PASS] Full receipt settles invoice to zero

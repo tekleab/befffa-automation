@@ -1,3 +1,0 @@
-10:07:32 [PERFORMANCE] API - Auth API Verification: 441.29ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Pay structure created: d2e30844-0dbd-4be1-933a-938a7a457024

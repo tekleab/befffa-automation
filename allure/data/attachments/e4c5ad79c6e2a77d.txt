@@ -1,6 +1,0 @@
-10:05:43 [PERFORMANCE] API - Auth API Verification: 699.29ms
-[AUTH] Session token and local storage injected successfully.
-[STEP] Phase 1: TIN validation check
-[INFO] UI Vendor form rendered via alternative view — verifying vendor profile access
-[OK] Vendor profile accessible: f1df90ff-0033-4600-b49e-0913c59a25d5
-[RESULT] Vendor Lifecycle: PASSED

@@ -1,3 +1,0 @@
-10:07:27 [PERFORMANCE] API - Auth API Verification: 435.04ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Leave applications endpoint healthy. Count: 0

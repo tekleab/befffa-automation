@@ -1,3 +1,0 @@
-10:07:46 [PERFORMANCE] API - Auth API Verification: 417.30ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Pay Components page rendered 10 rows

@@ -1,0 +1,6 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+12:44:59 [PERFORMANCE] API - Auth API Verification: 211.60ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+[AUDIT] PO lines sum: $9500 | Expected: $9500
+[PASS] Multi-line PO totals correct
