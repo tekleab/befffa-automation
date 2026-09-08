@@ -1,6 +1,0 @@
-06:43:05 [PERFORMANCE] API - Auth API Verification: 225.52ms
-[AUTH] Session token and local storage injected successfully.
-[HR] Attempt 1: list total pages=6 | checking 100 rows for email=dup.1788849786181.zvss9@beffa.com
-[HR] Fetching last page 6 for newly appended employee...
-[INFO] First employee created: 386b9796-99a4-44b6-bd28-250b6504e205
-[PASS] Duplicate email correctly rejected: 422

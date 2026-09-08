@@ -1,4 +1,0 @@
-[HR] All job positions for dept 6cafff5a-cb3c-4da4-a388-4bba49c98eb1 are full. Creating new one...
-[HR] Job position creation returned 500 — re-fetching existing positions for dept 6cafff5a-cb3c-4da4-a388-4bba49c98eb1
-[HR] Using existing job position for dept: "Manager" (418c8d67-ca3b-4b28-b05c-e50c697c9be5)
-[PASS] Pay component created: fa51cbe6-1279-4c1c-9e1c-fbbd919ecd4b | GL: e8b0574b-87e1-44fd-a021-cb26ddc0b9c0

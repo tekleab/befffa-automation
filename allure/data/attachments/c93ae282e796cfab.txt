@@ -1,1 +1,0 @@
-[AUDIT] remaining_balance: 120000 ✓

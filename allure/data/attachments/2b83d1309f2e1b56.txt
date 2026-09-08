@@ -1,4 +1,0 @@
-[CHECK] No x-company on invoices: status=400
-[CHECK] No x-company on bills: status=400
-[CHECK] No x-company on sales-orders: status=400
-[PASS] All endpoints correctly reject requests without x-company header

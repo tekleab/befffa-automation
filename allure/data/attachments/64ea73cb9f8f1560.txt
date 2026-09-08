@@ -1,4 +1,0 @@
-[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
-06:42:55 [PERFORMANCE] API - Auth API Verification: 216.05ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Timesheets page loaded without errors

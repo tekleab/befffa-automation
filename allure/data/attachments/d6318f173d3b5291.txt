@@ -1,5 +1,0 @@
-06:42:37 [PERFORMANCE] API - Auth API Verification: 196.23ms
-[AUTH] Session token and local storage injected successfully.
-[UI AUDIT] Navigating to Inventory / Warehouse module...
-[UI AUDIT] Navigation completed — verified index page response without console exception errors.
-[PASS] INV-INDEX-03 Warehouse & Location Index Page UI Grid Hydration verified.

@@ -1,3 +1,0 @@
-06:43:28 [PERFORMANCE] API - Auth API Verification: 217.74ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Payroll page loaded with content

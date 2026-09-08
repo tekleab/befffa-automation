@@ -1,4 +1,0 @@
-[HR] All job positions for dept 6cafff5a-cb3c-4da4-a388-4bba49c98eb1 are full. Creating new one...
-[HR] Job position creation returned 409 — re-fetching existing positions for dept 6cafff5a-cb3c-4da4-a388-4bba49c98eb1
-[HR] Using existing job position for dept: "Manager" (418c8d67-ca3b-4b28-b05c-e50c697c9be5)
-[PASS] Invalid pay component type rejected: {"tax_rule":["Invalid tax rule"],"type":["Invalid pay component type"]}

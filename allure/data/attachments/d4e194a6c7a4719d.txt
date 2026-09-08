@@ -1,3 +1,0 @@
-06:45:34 [PERFORMANCE] API - Auth API Verification: 267.84ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Warehouse & Location match schema contracts

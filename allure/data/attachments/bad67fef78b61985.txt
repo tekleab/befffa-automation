@@ -1,3 +1,0 @@
-06:43:01 [PERFORMANCE] API - Auth API Verification: 295.32ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Employee created: EMP/2026/09/08/000589 | id: 832fd528-cd96-452f-afc7-65ee6f810be2 | status: inactive

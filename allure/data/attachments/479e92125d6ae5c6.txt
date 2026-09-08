@@ -1,1 +1,0 @@
-[QUERY_BOUNDARY_DEFECT] SO-to-Invoice form rendered blank page on invalid SO ID (00000000-dead-beef-0000-111111111111). Expected error alert or redirect.

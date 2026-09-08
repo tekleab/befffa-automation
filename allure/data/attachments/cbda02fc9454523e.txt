@@ -1,6 +1,0 @@
-[TEST 2] Discovering existing Purchase Bill for Detail Tab Audit...
-[TEST 2] Found existing Bill ID: d4b3ebae-f160-4fed-9f6e-44b45262de33
-[TEST 2] Navigating to Bill Detail Page: /payables/bills/d4b3ebae-f160-4fed-9f6e-44b45262de33/detail
-[INITIAL LOAD] API Requests fired on initial page load: 1
-[TABS FOUND] Bill detail has 0 tabs.
-[PASS] Test 2 — Bill Detail Tab On-Demand Hook Fetching Verified!

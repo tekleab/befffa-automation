@@ -1,5 +1,0 @@
-[CHECK] Tampered JWT on invoices: status=401
-[CHECK] Tampered JWT on bills: status=401
-[CHECK] Tampered JWT on employees: status=401
-[CHECK] Tampered JWT on users: status=401
-[PASS] All endpoints correctly reject tampered JWT with 401

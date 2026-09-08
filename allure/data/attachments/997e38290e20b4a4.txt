@@ -1,3 +1,0 @@
-06:44:20 [PERFORMANCE] API - Auth API Verification: 219.57ms
-[AUTH] Session token and local storage injected successfully.
-[GUARD-06] Fake customer → 422

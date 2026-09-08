@@ -1,6 +1,0 @@
-[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
-06:51:02 [PERFORMANCE] API - Auth API Verification: 246.07ms
-[AUTH] Session token and local storage injected successfully.
-[AUTH] Reusing cached signed-in session state — skipping login navigation.
-[AUDIT] Price=$2000 Disc=$200 Qty=3 | Expected=$5400 | Actual=$0
-[PASS] Bill line discount applied correctly

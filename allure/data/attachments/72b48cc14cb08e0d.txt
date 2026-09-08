@@ -1,1 +1,0 @@
-[TC-02] Dest: 0 → 5 (expected: 5)
