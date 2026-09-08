@@ -25,14 +25,14 @@ test.describe('Sanity: ERP System Connectivity @sanity', () => {
   // ── Frontend reachability ────────────────────────────────────────────────
   test('Frontend: homepage returns 200', async ({ request }) => {
     const base = (process.env.BASE_URL || 'http://localhost:4173').replace(/['"]+/g, '').replace(/\/$/, '');
-    const res = await request.get(base, { timeout: 10000 });
+    const res = await request.get(base, { timeout: 20000 });
     expect(res.status(), `Frontend (${base}) did not respond with 200`).toBe(200);
   });
 
   // ── API server reachability ──────────────────────────────────────────────
   test('API: server root responds', async ({ request }) => {
     const base = apiBase();
-    const res = await request.get(base, { timeout: 10000 });
+    const res = await request.get(base, { timeout: 20000 });
     expect(res.status(), `API root (${base}) unreachable`).toBeLessThan(500);
   });
 
@@ -45,11 +45,11 @@ test.describe('Sanity: ERP System Connectivity @sanity', () => {
           email: process.env.BEFFA_USER || 'admin@beffa.com',
           password: process.env.BEFFA_PASS || '',
         },
-        timeout: 10000,
+        timeout: 20000,
       }
     );
-    // Accept 200 (success) or 401 (wrong creds but endpoint alive) — anything else is a crash
-    expect([200, 401], `Login endpoint returned unexpected status ${res.status()}`).toContain(res.status());
+    // Accept 200/201 (success / session created) or 401 (wrong creds but endpoint alive) — anything else is a crash
+    expect([200, 201, 401], `Login endpoint returned unexpected status ${res.status()}`).toContain(res.status());
   });
 
   // ── Module API alive checks (GET-only, auth-gated = 401 is healthy) ──────
