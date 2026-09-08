@@ -1,6 +1,14 @@
 {
   "last10Runs": [
     {
+      "run": "745",
+      "commit": "58ac14b",
+      "trigger": "workflow_dispatch (regression)",
+      "duration": "61m 26s",
+      "passRate": 86.8,
+      "status": "success"
+    },
+    {
       "run": "744",
       "commit": "a10796b",
       "trigger": "workflow_dispatch (regression)",
@@ -71,30 +79,22 @@
       "duration": "83m 12s",
       "passRate": 89.2,
       "status": "success"
-    },
-    {
-      "run": "730",
-      "commit": "4f55cf1",
-      "trigger": "push (smoke)",
-      "duration": "10m 28s",
-      "passRate": 100,
-      "status": "success"
     }
   ],
   "moduleBreakdown": [
     {
       "module": "Other",
-      "passed": 186,
-      "failed": 26,
+      "passed": 184,
+      "failed": 28,
       "skipped": 0,
       "trend": [
-        89.2,
         85.1,
         95.7,
         83.1,
         82.8,
         94.4,
-        87.7
+        87.7,
+        86.8
       ]
     }
   ]
