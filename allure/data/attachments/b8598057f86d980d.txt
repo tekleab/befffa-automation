@@ -1,5 +1,0 @@
-13:52:39 [PERFORMANCE] API - Auth API Verification: 358.37ms
-[AUTH] Session token and local storage injected successfully.
-[PERFORMANCE] GET /api/locations latency: 142ms
-[AUDIT] Locations returned: 4 items | Total: 1
-[PASS] INV-INDEX-02 Locations Index API verified (Latency: 142ms, Total: 1)

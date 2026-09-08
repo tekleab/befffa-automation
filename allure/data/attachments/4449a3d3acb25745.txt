@@ -1,0 +1,9 @@
+06:40:43 [PERFORMANCE] API - Auth API Verification: 215.64ms
+[AUTH] Session token and local storage injected successfully.
+[STEP 1] Creating fresh item and approving bill...
+[ADJ] quantity | qty=20 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008912 (ID: 8f06c656-8eb0-4723-9591-d3e895669e0d)
+06:40:49 [INFO] Advancing inventory-adjustments "8f06c656-8eb0-4723-9591-d3e895669e0d"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 20...
+[SUCCESS] API Confirmed: Stock correctly reached 20.
+[FRESH ITEM] Created: FIFO-Item-1788849644347 (c7ed1489-88f1-4d32-a647-002ab841b7c6) | method=FIFO | stock=20@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb

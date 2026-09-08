@@ -1,3 +1,0 @@
-[DateHelper] Resolved in-period date: 2026-09-04T00:00:00Z (day=4, ecYear=2019)
-13:54:33 [PERFORMANCE] API - Auth API Verification: 238.91ms
-[AUTH] Session token and local storage injected successfully.

@@ -1,0 +1,23 @@
+06:46:45 [PERFORMANCE] API - Auth API Verification: 206.66ms
+[AUTH] Session token and local storage injected successfully.
+[ADJ] quantity | qty=50 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008928 (ID: cce07e66-f8ce-4a58-af7c-cc76ed934c53)
+06:47:55 [INFO] Advancing inventory-adjustments "cce07e66-f8ce-4a58-af7c-cc76ed934c53"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 50...
+[SUCCESS] API Confirmed: Stock correctly reached 50.
+[FRESH ITEM] Created: FIFO-Item-1788850070240 (b9fdd292-1eca-4d1a-8060-07a5ac237150) | method=FIFO | stock=50@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+[WARN] API Login failed (apiRequestContext.post: socket hang up
+Call log:
+  - → POST http://168.119.175.142:8001/api/users/login?year=2019&period=yearly&calendar=ec&month=6
+    - user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/147.0.7727.15 Safari/537.36
+    - accept: */*
+    - accept-encoding: gzip,deflate,br
+    - Content-Type: application/json
+    - content-length: 49
+    - cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJlZmZhLmNvbSIsImV4cCI6MTc4ODkzNTY3OCwiaXNzIjoiTWlraWFzIFlvbmFzIiwicmVmcmVzaF9leHAiOjE3ODg5MzU2Nzh9.VsA4bUpukC2rKu-AAKVW0Ryhog7lMzulWUQ-I6UZY0M; auth-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGJlZmZhLmNvbSIsImV4cCI6MTc4ODkzNTY3OCwiaXNzIjoiTWlraWFzIFlvbmFzIiwicmVmcmVzaF9leHAiOjE3ODg5MzU2Nzh9.VsA4bUpukC2rKu-AAKVW0Ryhog7lMzulWUQ-I6UZY0M
+). Falling back to UI Login...
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+[PRECISION TEST] Creating multi-line invoice with fractional unit price 33.3333...
+[INVOICE CREATED] ID: 8dd8aee3-a4ed-44a2-89be-7b80413c80be | Ref: INV/2026/09/08/004736 | Amount: undefined
+06:48:16 [INFO] Advancing invoices "8dd8aee3-a4ed-44a2-89be-7b80413c80be"...
+[APPROVED] Invoice 8dd8aee3-a4ed-44a2-89be-7b80413c80be posted to GL

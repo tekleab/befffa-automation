@@ -1,5 +1,0 @@
-[DateHelper] Resolved in-period date: 2026-09-04T00:00:00Z (day=4, ecYear=2019)
-14:01:19 [PERFORMANCE] API - Auth API Verification: 295.96ms
-[AUTH] Session token and local storage injected successfully.
-[AUTH] Reusing cached signed-in session state — skipping login navigation.
-[VALIDATION AUDIT] SO-API-05: Zero Quantity Line Item → Status 422 (CODE_MESSAGE): "Validation error when creating sales order"

@@ -1,4 +1,0 @@
-13:53:06 [PERFORMANCE] API - Auth API Verification: 209.30ms
-[AUTH] Session token and local storage injected successfully.
-[INFO] First employee created: 1c474e82-f8f4-4231-b3a1-f43cb02a1890
-[PASS] Duplicate email correctly rejected: 422

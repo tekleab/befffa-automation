@@ -1,0 +1,1 @@
+[WARN] UI indexing lag for Invoice INV/2026/09/08/004711 under parallel load — balance 100 confirmed via API.

@@ -1,0 +1,17 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+06:53:17 [PERFORMANCE] API - Auth API Verification: 305.29ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+06:53:24 [INFO] Picking date: "Invoice Date" → target 2026-9-8
+06:53:25 [WARN] "Invoice Date" — target day 8 not found, picked early enabled: 1.
+06:53:26 [PERFORMANCE] UI - Pick Date: Invoice Date: 2504.28ms
+06:53:28 [PERFORMANCE] UI - Random Selection: Vendor: 2233.34ms
+06:53:31 [PERFORMANCE] UI - Random Selection: Accounts Payable: 2305.62ms
+[CURRENCY] Selected via button: Birr
+[API PRE-CAPTURE] Using guaranteed-stock item "FIFO-Item-1788850344582" @ $100
+[ITEM MODAL] ✅ Price confirmed: $100
+06:53:39 [PERFORMANCE] UI - Random Selection: Warehouse: 2167.60ms
+06:53:41 [PERFORMANCE] UI - Random Selection: Location: 1944.44ms
+06:53:44 [PERFORMANCE] UI - Random Selection: G/L Account: 2059.27ms
+[MODAL] Filled Quantity: 4
+06:53:47 [PERFORMANCE] UI - Random Selection: Tax: 2306.94ms

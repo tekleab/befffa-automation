@@ -1,7 +1,0 @@
-13:52:27 [PERFORMANCE] API - Auth API Verification: 527.30ms
-[AUTH] Session token and local storage injected successfully.
-[STEP 1] Creating item via API: API-CREATE-1788529947661
-[OK] Item created: API-CREATE-1788529947661 (5018a6cd-1feb-48fc-9296-b4cd85959fce)
-[STEP 2] Verifying item exists via API...
-13:52:31 [WARN] GET http://168.119.175.142:8001/api/inventory-item/5018a6cd-1feb-48fc-9296-b4cd85959fce/locations?year=2019&period=yearly&calendar=ec → apiRequestContext.get: socket hang up. Retry 1/4 in 1500ms...
-[PASS] Item "API-CREATE-1788529947661" confirmed via API.

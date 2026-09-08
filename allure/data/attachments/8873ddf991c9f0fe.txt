@@ -1,0 +1,15 @@
+06:42:29 [PERFORMANCE] API - Auth API Verification: 190.05ms
+[AUTH] Session token and local storage injected successfully.
+[STEP 1] Creating original item with item_id: DUP-GUARD-1788849749348...
+[OK] Original item created: DUP-GUARD-1788849749348 (ID: 02a27867-2786-4049-8eef-6cbebe982100)
+[STEP 2] Attempting to create a DUPLICATE with the same item_id...
+[PASS] Duplicate item_id correctly rejected: Item Creation API Failed: 422 - {
+	"code": 422,
+	"details": {
+		"item_id": [
+			"Item ID already taken."
+		]
+	},
+	"message": "Validation error when creating Inventory Item."
+}
+

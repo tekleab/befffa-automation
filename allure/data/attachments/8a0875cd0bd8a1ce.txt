@@ -1,5 +1,0 @@
-[DateHelper] Resolved in-period date: 2026-09-04T00:00:00Z (day=4, ecYear=2019)
-14:01:33 [PERFORMANCE] API - Auth API Verification: 597.55ms
-[AUTH] Session token and local storage injected successfully.
-[AUTH] Reusing cached signed-in session state — skipping login navigation.
-[⚠️ BACKEND DEFECT / KNOWN BEHAVIOR] Server accepted SO with negative unit price (draft status)

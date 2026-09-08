@@ -1,3 +1,0 @@
-13:53:08 [PERFORMANCE] API - Auth API Verification: 215.95ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Employees page loaded with content

@@ -1,0 +1,5 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+06:46:54 [PERFORMANCE] API - Auth API Verification: 327.21ms
+[AUTH] Session token and local storage injected successfully.
+[HR MODULE AUDIT] Testing HR Employee & Leave Request Error Visibility...
+[HR AUDIT] Visible Errors Captured: NONE (Silent Validation / Disabled Button)

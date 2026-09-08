@@ -1,0 +1,10 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+06:45:20 [PERFORMANCE] API - Auth API Verification: 214.12ms
+[AUTH] Session token and local storage injected successfully.
+[ADJ] quantity | qty=50 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008924 (ID: b2cd973a-f46a-4092-be1d-22e8a8011615)
+06:45:29 [INFO] Advancing inventory-adjustments "b2cd973a-f46a-4092-be1d-22e8a8011615"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 50...
+[SUCCESS] API Confirmed: Stock correctly reached 50.
+[FRESH ITEM] Created: FIFO-Item-1788849926609 (10bf02a1-8191-4eb7-a34f-1d5105ab8ef1) | method=FIFO | stock=50@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+[PASS] Bill BILL/2026/09/08/003954 strictly matches Zod runtime contract

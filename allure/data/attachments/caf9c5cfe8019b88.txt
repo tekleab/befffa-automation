@@ -1,0 +1,25 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+06:54:06 [PERFORMANCE] API - Auth API Verification: 476.65ms
+[AUTH] Session token and local storage injected successfully.
+[STEP 1] Creating and approving PO...
+[ADJ] quantity | qty=10 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008963 (ID: 156c4929-72b4-4883-ab45-c39a6d8edfa9)
+06:54:26 [INFO] Advancing inventory-adjustments "156c4929-72b4-4883-ab45-c39a6d8edfa9"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 10...
+[SUCCESS] API Confirmed: Stock correctly reached 10.
+[FRESH ITEM] Created: FIFO-Item-1788850462982 (057117d8-6d8d-47a0-9ea7-2c091734d93c) | method=FIFO | stock=10@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+06:54:37 [INFO] Advancing purchase-orders "17ca0477-683c-4faa-976b-bc72390911d4"...
+[OK] PO PO/2026/09/08/002518 approved.
+[STEP 2] Navigating to PO-to-Bill form...
+
+  ┌───────────────────────────────────────────────────────────────────────────────┐
+  │ PO-to-Bill: Loading & Data Resolution                                       │
+  ├───────────────────────────────────────────────────────────────────────────────┤
+  │ PO Ref                             │ PO/2026/09/08/002518                   │
+  │ PO ID                              │ 17ca0477-683c-4faa-976b-bc72390911d4   │
+  │ Loading Spinner Detected           │ Fast cache / No spinner                │
+  │ Form Data Resolved & Rendered      │ No (Blank)                             │
+  ├───────────────────────────────────────────────────────────────────────────────┤
+  │ Result                             │ ⚠ DEFECT — Form failed to render afte… │
+  └───────────────────────────────────────────────────────────────────────────────┘
+

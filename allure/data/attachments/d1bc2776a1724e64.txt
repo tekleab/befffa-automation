@@ -1,3 +1,0 @@
-13:55:40 [PERFORMANCE] API - Auth API Verification: 391.71ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Account (Cash at Bank - CBE) matches AccountSchema contract

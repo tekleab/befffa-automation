@@ -1,0 +1,24 @@
+06:38:39 [PERFORMANCE] API - Auth API Verification: 229.41ms
+[AUTH] Session token and local storage injected successfully.
+[ADJ] quantity | qty=20 @ $200 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008900 (ID: f0ace7cf-2c4d-4448-bffd-a06531072b2c)
+06:38:48 [INFO] Advancing inventory-adjustments "f0ace7cf-2c4d-4448-bffd-a06531072b2c"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 20...
+[SUCCESS] API Confirmed: Stock correctly reached 20.
+[FRESH ITEM] Created: FIFO-Item-1788849525425 (e924c60a-479c-4f21-bdf2-ba142f8400de) | method=FIFO | stock=20@$200 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+06:38:51 [INFO] Advancing bills "95f9d953-2037-4745-8030-7382fb3cea5d"...
+[BILL] BILL/2026/09/08/003941 approved
+[POLL] Waiting for bill journal entries… attempt 1/10
+[POLL] Waiting for bill journal entries… attempt 2/10
+[POLL] Waiting for bill journal entries… attempt 3/10
+[POLL] Waiting for bill journal entries… attempt 4/10
+[POLL] Waiting for bill journal entries… attempt 5/10
+[POLL] Waiting for bill journal entries… attempt 6/10
+[POLL] Waiting for bill journal entries… attempt 7/10
+[POLL] Waiting for bill journal entries… attempt 8/10
+[POLL] Waiting for bill journal entries… attempt 9/10
+[POLL] Waiting for bill journal entries… attempt 10/10
+[PRE-REVERSAL] AP credit: 0.00
+[SKIP GL AUDIT] Account mapping not implemented — bill reversal GL assertions skipped.
+[ACTION] Reversing/Voiding Bill 95f9d953-2037-4745-8030-7382fb3cea5d via API...
+[SKIP] Reversal API called: true. GL assertions deferred until account mapping is configured.

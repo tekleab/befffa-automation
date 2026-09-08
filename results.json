@@ -1,29 +1,37 @@
 {
   "total": 212,
-  "passed": 186,
-  "failed": 26,
+  "passed": 184,
+  "failed": 28,
   "skipped": 0,
-  "passRate": 87.7,
-  "avgDurationMs": 16811,
-  "lastUpdated": "2026-09-04T14:04:20.510Z",
+  "passRate": 86.8,
+  "avgDurationMs": 17391,
+  "lastUpdated": "2026-09-08T06:55:25.179Z",
   "moduleBreakdown": [
     {
       "module": "Other",
-      "passed": 186,
-      "failed": 26,
+      "passed": 184,
+      "failed": 28,
       "skipped": 0,
       "trend": [
-        89.2,
         85.1,
         95.7,
         83.1,
         82.8,
         94.4,
-        87.7
+        87.7,
+        86.8
       ]
     }
   ],
   "last10Runs": [
+    {
+      "run": "745",
+      "commit": "58ac14b",
+      "trigger": "workflow_dispatch (regression)",
+      "duration": "61m 26s",
+      "passRate": 86.8,
+      "status": "success"
+    },
     {
       "run": "744",
       "commit": "a10796b",
@@ -95,14 +103,6 @@
       "duration": "83m 12s",
       "passRate": 89.2,
       "status": "success"
-    },
-    {
-      "run": "730",
-      "commit": "4f55cf1",
-      "trigger": "push (smoke)",
-      "duration": "10m 28s",
-      "passRate": 100,
-      "status": "success"
     }
   ],
   "criticalBlockers": [
@@ -110,7 +110,7 @@
       "severity": "critical",
       "title": "Validate TIN, create customer, edit, remove",
       "error": "TimeoutError: locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#customer_name-input-id') to be visible\u001b[22m\n\n\n  72 |         await app.editCustomerBtn.click({ force: t",
-      "firstSeen": "2026-09-04T13:45:01.714Z",
+      "firstSeen": "2026-09-08T06:34:40.438Z",
       "occurrences": 1,
       "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
     },
@@ -118,7 +118,7 @@
       "severity": "critical",
       "title": "Audit: Bill payment must debit AP and credit Cash/Bank",
       "error": "Error: Bill-Payment API failed: 500 - {\n\t\"code\": 500,\n\t\"message\": \"Unable to create Payment\"\n}\n\n\n   at ../lib/api/PurchaseAPI.ts:762\n\n  760 |       const topUp = this.parseInsufficientCashTopUp(errTex",
-      "firstSeen": "2026-09-04T13:48:29.676Z",
+      "firstSeen": "2026-09-08T06:38:05.552Z",
       "occurrences": 1,
       "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
     },
@@ -126,7 +126,7 @@
       "severity": "critical",
       "title": "Audit: Partial payment GL — AP partially cleared, cash reduced exactly",
       "error": "Error: Bill-Payment API failed: 500 - {\n\t\"code\": 500,\n\t\"message\": \"Unable to create Payment\"\n}\n\n\n   at ../lib/api/PurchaseAPI.ts:762\n\n  760 |       const topUp = this.parseInsufficientCashTopUp(errTex",
-      "firstSeen": "2026-09-04T13:49:17.453Z",
+      "firstSeen": "2026-09-08T06:38:45.568Z",
       "occurrences": 1,
       "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
     },
@@ -134,7 +134,7 @@
       "severity": "medium",
       "title": "UI: Bills Index page (/payables/bills) must resolve data grid without error states",
       "error": "Error: Bills index page should not display error alert\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mfalse\u001b[39m\nReceive",
-      "firstSeen": "2026-09-04T13:49:43.385Z",
+      "firstSeen": "2026-09-08T06:39:10.710Z",
       "occurrences": 1,
       "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
     },
@@ -142,23 +142,23 @@
       "severity": "critical",
       "title": "Audit: Single payment must correctly reconcile multiple unpaid bills",
       "error": "Error: Multi-bill payment failed: 500 - {\n\t\"code\": 500,\n\t\"message\": \"Unable to create Payment\"\n}\n\n\n   at ../lib/api/PurchaseAPI.ts:762\n\n  760 |       const topUp = this.parseInsufficientCashTopUp(errT",
-      "firstSeen": "2026-09-04T13:49:51.271Z",
+      "firstSeen": "2026-09-08T06:39:17.570Z",
       "occurrences": 1,
       "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
     },
     {
       "severity": "critical",
       "title": "Guardrail: Price variance between PO and Bill must be blocked or rejected",
-      "error": "Error: [PRICE_VARIANCE_BUG] System approved Bill BILL/2026/09/04/003917 with price variance (billed 600 vs PO 500)!\n\n  67 |                 // If it approved, log as a known bug or warning\n  68 |     ",
-      "firstSeen": "2026-09-04T13:50:47.561Z",
+      "error": "Error: [PRICE_VARIANCE_BUG] System approved Bill BILL/2026/09/08/003950 with price variance (billed 600 vs PO 500)!\n\n  67 |                 // If it approved, log as a known bug or warning\n  68 |     ",
+      "firstSeen": "2026-09-08T06:40:29.694Z",
       "occurrences": 1,
       "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
     },
     {
-      "severity": "medium",
-      "title": "Guardrail: Deactivated item must be rejected for new stock adjustments",
-      "error": "Error: [VULNERABILITY] System accepted a stock adjustment on a deactivated item (Ref: ADJ/2026/09/04/008820). Fix: validate item.status == active before creating adjustments.\n\n  137 |\n  138 |         ",
-      "firstSeen": "2026-09-04T13:51:52.600Z",
+      "severity": "critical",
+      "title": "API: Vendor outstanding balance increases after bill approval",
+      "error": "Error: Vendor Discovery HTTP 0: apiRequestContext.get: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - → GET http://168.119.175.142:8001/api/vendors?page=1&pageSize=10\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5",
+      "firstSeen": "2026-09-08T06:40:42.668Z",
       "occurrences": 1,
       "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
     },
@@ -166,7 +166,7 @@
       "severity": "critical",
       "title": "Guardrail: Server must validate employee_id and return 422 (not 500 with SQL leak)",
       "error": "Error: [TIMESHEET_INVALID_EMPLOYEE_BUG] Server failed validation on invalid employee_id.\n  HTTP Status: 500 (Expected: 422)\n  Raw SQL Exposed: true\n  Response Body: {\n\t\"message\": \"failed to create tim",
-      "firstSeen": "2026-09-04T13:52:57.092Z",
+      "firstSeen": "2026-09-08T06:42:57.402Z",
       "occurrences": 1,
       "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
     },
@@ -174,7 +174,7 @@
       "severity": "medium",
       "title": "Full lifecycle: 3 employees created, contracted, and processed in one payroll run",
       "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m\"draft\"\u001b[39m\nReceived array: \u001b[31m[\"approved\", \"processed\", \"comple",
-      "firstSeen": "2026-09-04T13:53:17.523Z",
+      "firstSeen": "2026-09-08T06:43:17.246Z",
       "occurrences": 1,
       "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
     },
@@ -182,7 +182,7 @@
       "severity": "medium",
       "title": "UI-12: Project detail page shows financial data (budget / revenue / balance)",
       "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  56 |             await page.",
-      "firstSeen": "2026-09-04T13:54:30.644Z",
+      "firstSeen": "2026-09-08T06:44:31.456Z",
       "occurrences": 1,
       "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
     }

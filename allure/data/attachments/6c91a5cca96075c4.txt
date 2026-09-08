@@ -1,0 +1,73 @@
+### 🚨 API Request Failure Report
+- **Endpoint**: `http://168.119.175.142:8001/api/invoices?year=2019&period=yearly&calendar=ec`
+- **Method**: `POST`
+- **Status Code**: `400`
+- **Latency**: `327.73ms`
+
+#### 📋 Request Details
+**Headers**:
+```json
+{
+  "x-company": "BM Tech",
+  "Authorization": "Bearer eyJhbGciOiJIUzI... (truncated)"
+}
+```
+
+**Body**:
+```json
+{
+  "accounts_receivable_id": "bd0e0b51-b32d-4925-b442-05a3e63abf16",
+  "currency_id": "ffbf8ef2-bffe-4c52-b588-17472d6baeb3",
+  "customer_id": "243b9845-e056-48ce-924d-6f233d99c574",
+  "date": "2026-09-08T00:00:00Z",
+  "posting_date": "2026-09-08T00:00:00Z",
+  "invoice_date": "2026-09-08T00:00:00Z",
+  "due_date": "2026-09-08T00:00:00Z",
+  "released_sales_order_items": [
+    {
+      "so_item_id": "2d90be0d-0152-4e37-af06-ce395973b7cf",
+      "released_quantity": 1,
+      "warehouse_id": "274c6ccf-b0f0-4c67-bbff-309c3f63a871",
+      "location_id": "539ab667-5559-4db7-8cd4-24f797d57ebb"
+    }
+  ],
+  "status": "draft"
+}
+```
+
+
+#### 💥 Response Details
+**Response Body**:
+```json
+{
+	"code": 400,
+	"message": "sales order balance already exhausted: sales order item 2d90be0d-0152-4e37-af06-ce395973b7cf ordered 10, already released 10, requested 1"
+}
+
+```
+
+#### 💻 Replay with curl
+```bash
+curl -i -X POST \
+  -H "x-company: BM Tech" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI... (truncated)" \
+  -d '{
+  "accounts_receivable_id": "bd0e0b51-b32d-4925-b442-05a3e63abf16",
+  "currency_id": "ffbf8ef2-bffe-4c52-b588-17472d6baeb3",
+  "customer_id": "243b9845-e056-48ce-924d-6f233d99c574",
+  "date": "2026-09-08T00:00:00Z",
+  "posting_date": "2026-09-08T00:00:00Z",
+  "invoice_date": "2026-09-08T00:00:00Z",
+  "due_date": "2026-09-08T00:00:00Z",
+  "released_sales_order_items": [
+    {
+      "so_item_id": "2d90be0d-0152-4e37-af06-ce395973b7cf",
+      "released_quantity": 1,
+      "warehouse_id": "274c6ccf-b0f0-4c67-bbff-309c3f63a871",
+      "location_id": "539ab667-5559-4db7-8cd4-24f797d57ebb"
+    }
+  ],
+  "status": "draft"
+}' \
+  "http://168.119.175.142:8001/api/invoices?year=2019&period=yearly&calendar=ec"
+```

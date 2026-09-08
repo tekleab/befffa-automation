@@ -1,0 +1,25 @@
+[DateHelper] _fromEnv: EC year 2019 → using 2026-09-08
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+06:38:17 [PERFORMANCE] API - Auth API Verification: 205.63ms
+[AUTH] Session token and local storage injected successfully.
+[ADJ] quantity | qty=20 @ $200 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008899 (ID: c483212f-f0d6-4f53-b1ab-af824e628813)
+06:38:34 [INFO] Advancing inventory-adjustments "c483212f-f0d6-4f53-b1ab-af824e628813"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 20...
+[SUCCESS] API Confirmed: Stock correctly reached 20.
+[FRESH ITEM] Created: FIFO-Item-1788849511024 (84a546d0-409e-4850-924f-5c1c1c96ca22) | method=FIFO | stock=20@$200 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+06:38:38 [INFO] Advancing bills "5c9df4c7-1af5-4064-9e38-3469ac9526b0"...
+[BILL] BILL/2026/09/08/003939 approved | amount: 3500
+[POLL] Waiting for bill journal entries… attempt 1/10
+[POLL] Waiting for bill journal entries… attempt 2/10
+[POLL] Waiting for bill journal entries… attempt 3/10
+[POLL] Waiting for bill journal entries… attempt 4/10
+[POLL] Waiting for bill journal entries… attempt 5/10
+[POLL] Waiting for bill journal entries… attempt 6/10
+[POLL] Waiting for bill journal entries… attempt 7/10
+[POLL] Waiting for bill journal entries… attempt 8/10
+[POLL] Waiting for bill journal entries… attempt 9/10
+[POLL] Waiting for bill journal entries… attempt 10/10
+[STEP] AP credit on bill: 0.00
+[SKIP GL AUDIT] Account mapping not implemented — bill payment GL assertions skipped.
+[ACTION] Creating Bill Payment for 5c9df4c7-1af5-4064-9e38-3469ac9526b0 via API (CashAcct: 0e41cae5-57a2-4245-9ece-d129ca61addd)...

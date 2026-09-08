@@ -1,0 +1,24 @@
+06:54:40 [PERFORMANCE] API - Auth API Verification: 202.02ms
+[AUTH] Session token and local storage injected successfully.
+[STEP 1] Creating and approving Sales Order...
+[ADJ] quantity | qty=10 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008966 (ID: b18c7e64-4b13-47ea-89ec-b32dc2c8ed5d)
+06:54:47 [INFO] Advancing inventory-adjustments "b18c7e64-4b13-47ea-89ec-b32dc2c8ed5d"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 10...
+[SUCCESS] API Confirmed: Stock correctly reached 10.
+[FRESH ITEM] Created: WAC-Item-1788850483723 (efd976b0-3f49-4aee-a08e-df3e034c1904) | method=WAC | stock=10@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+06:54:50 [INFO] Advancing sales-orders "11771304-aaf0-43b9-8605-638cdf4398f8"...
+[OK] SO SO/2026/09/08/001285 approved.
+[STEP 2] Navigating to SO-to-Invoice form...
+
+  ┌───────────────────────────────────────────────────────────────────────────────┐
+  │ SO-to-Invoice: Loading & Data Resolution                                    │
+  ├───────────────────────────────────────────────────────────────────────────────┤
+  │ SO Ref                             │ SO/2026/09/08/001285                   │
+  │ SO ID                              │ 11771304-aaf0-43b9-8605-638cdf4398f8   │
+  │ Loading Spinner Detected           │ Fast cache / No spinner                │
+  │ Form Data Resolved & Rendered      │ No (Blank)                             │
+  ├───────────────────────────────────────────────────────────────────────────────┤
+  │ Result                             │ ⚠ DEFECT — Form failed to render afte… │
+  └───────────────────────────────────────────────────────────────────────────────┘
+

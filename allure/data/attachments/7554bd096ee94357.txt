@@ -1,0 +1,13 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+06:42:11 [PERFORMANCE] API - Auth API Verification: 263.52ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+[ADJ] quantity | qty=20 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008917 (ID: 02d033c4-34a9-41e9-ad8d-b8f8804995bf)
+06:42:16 [INFO] Advancing inventory-adjustments "02d033c4-34a9-41e9-ad8d-b8f8804995bf"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 20...
+[SUCCESS] API Confirmed: Stock correctly reached 20.
+[FRESH ITEM] Created: FIFO-Item-1788849732727 (a31794d6-4924-4159-b37c-e84acabcaca0) | method=FIFO | stock=20@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+[ATTACK] Attempting zero-quantity adjustment for item: FIFO-Item-1788849732727
+[ADJ] quantity | qty=0 @ $100 | current=20 loc=0
+[PASS] Zero adjustment correctly rejected at creation.

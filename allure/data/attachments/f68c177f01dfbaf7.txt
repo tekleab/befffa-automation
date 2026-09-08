@@ -1,0 +1,4 @@
+[AUTH SETUP] Authenticating session once via API...
+[DateHelper] Resolved in-period date: 2026-08-12T00:00:00Z (day=12, ecYear=2019)
+06:34:38 [PERFORMANCE] API - Auth API Verification: 199.70ms
+[AUTH] Session token and local storage injected successfully.

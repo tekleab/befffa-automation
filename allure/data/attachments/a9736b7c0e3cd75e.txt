@@ -1,0 +1,23 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+06:50:36 [PERFORMANCE] API - Auth API Verification: 210.75ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+06:50:36 [INFO] [STOCK_TOPUP] Injecting 70 units for item 2f3ac151-98c7-4650-b783-b1b5de58aced...
+[ADJ] quantity | qty=70 @ $100 | current=50 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008946 (ID: 701e0158-1648-4e76-a7c3-d6ce56eff431)
+06:50:37 [INFO] Advancing inventory-adjustments "701e0158-1648-4e76-a7c3-d6ce56eff431"...
+06:50:43 [INFO] [STOCK_TOPUP] Injected 70 units for item 2f3ac151-98c7-4650-b783-b1b5de58aced (adj ADJ/2026/09/08/008946)
+[SO-UI-03] ✅ Pre-topped itemA (2f3ac151-98c7-4650-b783-b1b5de58aced) to 50 units
+[API PRE-CAPTURE] Using guaranteed-stock item "FIFO-Item-1788850190084" @ $100
+06:50:48 [INFO] Picking date: "Sales Order Date" → target 2026-9-8
+06:50:50 [WARN] "Sales Order Date" — target day 8 not found, picked early enabled: 1.
+06:50:50 [PERFORMANCE] UI - Pick Date: Sales Order Date: 2740.47ms
+06:50:53 [PERFORMANCE] UI - Random Selection: Customer: 2266.94ms
+06:50:55 [PERFORMANCE] UI - Random Selection: Accounts Receivable: 2015.88ms
+[CURRENCY] Selected via button: Birr
+[ITEM MODAL] ⚠️ Price re-forced via React setter to: 100
+06:51:03 [PERFORMANCE] UI - Random Selection: Warehouse: 2103.12ms
+06:51:06 [PERFORMANCE] UI - Random Selection: Location: 2267.12ms
+06:51:08 [PERFORMANCE] UI - Random Selection: G/L Account: 2197.20ms
+[MODAL] Filled Quantity: 2
+06:51:11 [PERFORMANCE] UI - Random Selection: Tax: 2177.61ms

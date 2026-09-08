@@ -1,0 +1,26 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+06:52:58 [PERFORMANCE] API - Auth API Verification: 369.70ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+06:52:58 [INFO] [STOCK_TOPUP] Injecting 70 units for item 400d2ceb-ba82-4689-9ec8-b36be2dfa98c...
+[ADJ] quantity | qty=70 @ $100 | current=50 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008958 (ID: c5a719a5-0c6e-4b06-9ade-c0e9540aa8af)
+06:53:00 [INFO] Advancing inventory-adjustments "c5a719a5-0c6e-4b06-9ade-c0e9540aa8af"...
+06:53:06 [INFO] [STOCK_TOPUP] Injected 70 units for item 400d2ceb-ba82-4689-9ec8-b36be2dfa98c (adj ADJ/2026/09/08/008958)
+[INV-UI-01] ✅ Pre-topped itemA stock to 50 units
+[API PRE-CAPTURE] Using guaranteed-stock item "FIFO-Item-1788850309665" @ $100
+06:53:11 [INFO] Picking date: "Invoice Date" → target 2026-9-8
+06:53:13 [WARN] "Invoice Date" — target day 8 not found, picked early enabled: 1.
+06:53:13 [PERFORMANCE] UI - Pick Date: Invoice Date: 2423.22ms
+06:53:13 [INFO] Picking date: "Due Date" → target 2026-9-8
+06:53:15 [WARN] "Due Date" — target day 8 not found, picked early enabled: 1.
+06:53:16 [PERFORMANCE] UI - Pick Date: Due Date: 2073.27ms
+06:53:18 [PERFORMANCE] UI - Random Selection: Customer: 2093.51ms
+06:53:20 [PERFORMANCE] UI - Random Selection: Accounts Receivable: 2282.41ms
+[CURRENCY] Selected via button: Birr
+[ITEM MODAL] ⚠️ Price re-forced via React setter to: 100
+06:53:29 [PERFORMANCE] UI - Random Selection: Warehouse: 2102.70ms
+06:53:32 [PERFORMANCE] UI - Random Selection: Location: 2181.46ms
+06:53:34 [PERFORMANCE] UI - Random Selection: G/L Account: 2176.58ms
+[MODAL] Filled Quantity: 2
+06:53:38 [PERFORMANCE] UI - Random Selection: Tax: 2383.67ms

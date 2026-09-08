@@ -1,3 +1,0 @@
-13:53:16 [PERFORMANCE] API - Auth API Verification: 207.22ms
-[AUTH] Session token and local storage injected successfully.
-[PASS] Leave Applications page rendered without errors

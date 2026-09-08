@@ -1,0 +1,15 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+[ADJ] quantity | qty=30 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/008918 (ID: 8662582f-5a8b-450b-b1e3-ff2c426ec4db)
+06:42:23 [INFO] Advancing inventory-adjustments "8662582f-5a8b-450b-b1e3-ff2c426ec4db"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 30...
+[SUCCESS] API Confirmed: Stock correctly reached 30.
+[FRESH ITEM] Created: FIFO-Item-1788849735344 (bd06c4f9-b4ca-48ee-a260-a665de47ed4a) | method=FIFO | stock=30@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+[DEST] Using system location: 87d66495-1719-4402-9b0d-147859d3bc6c | Warehouse: ae638681-f2ae-492a-898e-edab3be6186b
+[SETUP] Item: "FIFO-Item-1788849735344" | Src stock: 30 | Dest stock: 0
+[SETUP] Src loc: 539ab667-5559-4db7-8cd4-24f797d57ebb | Dest loc: 87d66495-1719-4402-9b0d-147859d3bc6c
+[MOVE ORDER] Created: 52eaca7a-3320-4c38-a3dc-0adaccad476b (status: draft)
+06:42:27 [INFO] Advancing move-orders "52eaca7a-3320-4c38-a3dc-0adaccad476b"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 27...
+[SUCCESS] API Confirmed: Stock correctly reached 27.
+[TC-03] Total before: 30 | Total after: 30 | Src: 27 | Dest: 3
