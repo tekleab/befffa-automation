@@ -1,0 +1,1 @@
+[WARN] Receipt RCPT/2026/09/08/001326 not visible on page 1/2 of customer profile tab. Direct API verification passed.

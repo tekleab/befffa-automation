@@ -1,0 +1,8 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+10:07:09 [PERFORMANCE] API - Auth API Verification: 300.16ms
+[AUTH] Session token and local storage injected successfully.
+[HR] All job positions for dept 6cafff5a-cb3c-4da4-a388-4bba49c98eb1 are full. Creating new one...
+[HR] Job position creation returned 409 — re-fetching existing positions for dept 6cafff5a-cb3c-4da4-a388-4bba49c98eb1
+[HR] Using existing job position for dept: "Manager" (418c8d67-ca3b-4b28-b05c-e50c697c9be5)
+[INFO] First timesheet already exists for this date
+[PASS] Duplicate timesheet correctly rejected: 409

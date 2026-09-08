@@ -1,0 +1,3 @@
+[INFO] Payroll run accepted for EC year 2019 (GC 2026-08-31)
+[PASS] Payroll run created: 3a1c29fd-d279-447a-8817-4e1590ce3838 | status: draft
+[PASS] Payroll run persisted correctly

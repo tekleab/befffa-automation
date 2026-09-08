@@ -1,0 +1,53 @@
+10:12:10 [PERFORMANCE] API - Auth API Verification: 609.25ms
+[AUTH] Session token and local storage injected successfully.
+[ADJ] quantity | qty=50 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/009073 (ID: e27df475-0b6a-41b3-bdc2-995d9f02b50c)
+10:12:45 [INFO] Advancing inventory-adjustments "e27df475-0b6a-41b3-bdc2-995d9f02b50c"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 50...
+[SUCCESS] API Confirmed: Stock correctly reached 50.
+[FRESH ITEM] Created: FIFO-Item-1788862362343 (64080468-b414-42ea-b5aa-424f15da8f18) | method=FIFO | stock=50@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+[ADJ] quantity | qty=50 @ $80 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/009074 (ID: 4b48ad09-0193-4131-aaa6-538206a5af64)
+10:12:53 [INFO] Advancing inventory-adjustments "4b48ad09-0193-4131-aaa6-538206a5af64"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 50...
+[SUCCESS] API Confirmed: Stock correctly reached 50.
+[FRESH ITEM] Created: FIFO-Item-1788862369926 (05cca608-1c0c-4f5e-8403-002c635820cc) | method=FIFO | stock=50@$80 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+10:12:56 [INFO] [STOCK_TOPUP] Injecting 70 units for item 64080468-b414-42ea-b5aa-424f15da8f18...
+[ADJ] quantity | qty=70 @ $100 | current=50 loc=0
+10:12:57 [WARN] [STOCK_TOPUP] Adjustment creation failed: {  "code": 422,  "details": {   "location_id": [    "Item doesn't exist in given location."   ]  },  "message": "Validation error when creating inventory adjustment" } 
+10:12:57 [INFO] [STOCK_TOPUP] Injecting 70 units for item 64080468-b414-42ea-b5aa-424f15da8f18...
+[ADJ] quantity | qty=70 @ $100 | current=50 loc=0
+10:12:58 [WARN] [STOCK_TOPUP] Adjustment creation failed: {  "code": 422,  "details": {   "location_id": [    "Item doesn't exist in given location."   ]  },  "message": "Validation error when creating inventory adjustment" } 
+10:12:58 [INFO] [STOCK_TOPUP] Injecting 70 units for item 64080468-b414-42ea-b5aa-424f15da8f18...
+[ADJ] quantity | qty=70 @ $100 | current=50 loc=0
+10:12:59 [WARN] [STOCK_TOPUP] Adjustment creation failed: {  "code": 422,  "details": {   "location_id": [    "Item doesn't exist in given location."   ]  },  "message": "Validation error when creating inventory adjustment" } 
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+10:13:06 [PERFORMANCE] API - Auth API Verification: 257.89ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+10:13:12 [INFO] Picking date: "Purchase Order Date" → target 2026-9-8
+10:13:14 [WARN] "Purchase Order Date" — target day 8 not found, picked early enabled: 1.
+10:13:15 [PERFORMANCE] UI - Pick Date: Purchase Order Date: 2379.43ms
+[SELECT-OPTION] Vendor (attempt 1): overlayVisible=true, count=21
+10:13:17 [PERFORMANCE] UI - Random Selection: Vendor: 2288.72ms
+[SELECT-OPTION] Accounts Payable (attempt 1): overlayVisible=true, count=21
+10:13:19 [PERFORMANCE] UI - Random Selection: Accounts Payable: 2309.45ms
+[SELECT-OPTION] Purchase Type (attempt 1): overlayVisible=true, count=12
+10:13:21 [PERFORMANCE] UI - Random Selection: Purchase Type: 2109.81ms
+[API PRE-CAPTURE] Using guaranteed-stock item "FIFO-Item-1788862362343" @ $100
+[ITEM MODAL] Clicking item option: "FIFO-Item-1788862362343"
+[ITEM MODAL] Item selected status: true | Button text: "FIFO-Item-1788862362343"
+[SELECT-OPTION] Warehouse (attempt 1): overlayVisible=true, count=4
+10:13:29 [PERFORMANCE] UI - Random Selection: Warehouse: 2033.48ms
+[SELECT-OPTION] Location (attempt 1): overlayVisible=true, count=4
+10:13:32 [PERFORMANCE] UI - Random Selection: Location: 2072.83ms
+[MODAL] Item branch - G/L selector visible: true
+[SELECT-OPTION] G/L Account (attempt 1): overlayVisible=true, count=20
+10:13:35 [PERFORMANCE] UI - Random Selection: G/L Account: 2586.81ms
+[MODAL] Filled Quantity: 5
+[SELECT-OPTION] Tax (attempt 1): overlayVisible=true, count=8
+10:13:38 [PERFORMANCE] UI - Random Selection: Tax: 2177.09ms
+[MODAL] Item line item added successfully
+[OK] Inventory line item added to PO
+10:13:41 [INFO] Advancing purchase-orders "62a44374-e477-4698-a2c2-ed850f0f30b1"...
+[PASS] PO with inventory line item created and approved

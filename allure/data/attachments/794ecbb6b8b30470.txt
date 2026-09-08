@@ -1,0 +1,2 @@
+[IT ADMIN READ] GET /sales-orders status: 200
+[IT ADMIN WRITE] POST /sales-orders status: 422

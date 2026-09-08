@@ -1,0 +1,5 @@
+10:10:08 [PERFORMANCE] API - Auth API Verification: 418.16ms
+[AUTH] Session token and local storage injected successfully.
+[BDEV-1136] Testing COA / Accounts Pagination (page=1, pageSize=5 vs page=2)...
+[BDEV-1136] Page 1 returned 5 accounts | Total: 22
+[PASS] BDEV-1136 COA Detail/List Pagination verified (Total: 22, PageSize: 5)

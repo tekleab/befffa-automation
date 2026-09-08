@@ -1,0 +1,1 @@
+[PASS] All 20 pay components have valid structure

@@ -1,0 +1,2 @@
+[INFO] Notifications count: 20
+[PASS] All 20 notifications belong to correct company

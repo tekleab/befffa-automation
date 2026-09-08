@@ -1,0 +1,30 @@
+[ERROR] Adjustment API Failed: 422 - {
+	"code": 422,
+	"details": {
+		"location_id": [
+			"Item doesn't exist in given location."
+		]
+	},
+	"message": "Validation error when creating inventory adjustment"
+}
+
+[ERROR] Adjustment API Failed: 422 - {
+	"code": 422,
+	"details": {
+		"location_id": [
+			"Item doesn't exist in given location."
+		]
+	},
+	"message": "Validation error when creating inventory adjustment"
+}
+
+[ERROR] Adjustment API Failed: 422 - {
+	"code": 422,
+	"details": {
+		"location_id": [
+			"Item doesn't exist in given location."
+		]
+	},
+	"message": "Validation error when creating inventory adjustment"
+}
+

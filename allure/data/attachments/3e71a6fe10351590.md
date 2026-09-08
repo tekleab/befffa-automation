@@ -1,0 +1,150 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: hr/hr-attendance.spec.ts >> HR: Timesheets & Attendances @hr @smoke >> Guardrail: Server must validate employee_id and return 422 (not 500 with SQL leak)
+- Location: tests/hr/hr-attendance.spec.ts:136:9
+
+# Error details
+
+```
+Error: [TIMESHEET_INVALID_EMPLOYEE_BUG] Server failed validation on invalid employee_id.
+  HTTP Status: 500 (Expected: 422)
+  Raw SQL Exposed: true
+  Response Body: {
+	"message": "failed to create timesheet: ERROR: insert or update on table \"timesheets\" violates foreign key constraint \"fk_employees_timesheets\" (SQLSTATE 23503)"
+}
+
+  Fix Required: Pre-validate employee_id exists before executing database INSERT to avoid SQLSTATE 23503 crash.
+```
+
+# Page snapshot
+
+```yaml
+- img "Logo" [ref=e2]
+```
+
+# Test source
+
+```ts
+  93  |     // -------------------------------------------------------------------------
+  94  |     // UI: Timesheets page loads without error
+  95  |     // -------------------------------------------------------------------------
+  96  |     test('UI: Timesheets page must load and not show an error state', async ({ page }) => {
+  97  |         const app = new AppManager(page);
+  98  |         await app.login(process.env.BEFFA_USER, process.env.BEFFA_PASS);
+  99  | 
+  100 | 
+  101 |         await page.goto('/human-resources/timesheets', { waitUntil: 'commit' });
+  102 | 
+  103 |         const hasError = await page.locator('text=/error|failed|something went wrong/i').first()
+  104 |             .isVisible({ timeout: 5000 }).catch(() => false);
+  105 |         expect(hasError).toBe(false);
+  106 | 
+  107 |         // Breadcrumb nav is present but may be clipped — verify via URL + any visible content
+  108 |         expect(page.url()).toMatch(/timesheet/i);
+  109 |         const content = page.locator('table, [role="table"], button, .chakra-text, a').first();
+  110 |         await content.waitFor({ state: 'visible', timeout: 20000 });
+  111 |         console.log(`[PASS] Timesheets page loaded without errors`);
+  112 |     });
+  113 | 
+  114 |     // -------------------------------------------------------------------------
+  115 |     // UI: Attendances page loads (no API route — UI-only module)
+  116 |     // -------------------------------------------------------------------------
+  117 |     test('UI: Attendances page must load and render the attendance module', async ({ page }) => {
+  118 |         const app = new AppManager(page);
+  119 |         await app.login(process.env.BEFFA_USER, process.env.BEFFA_PASS);
+  120 | 
+  121 | 
+  122 |         await page.goto('/human-resources/attendances', { waitUntil: 'commit' });
+  123 | 
+  124 |         const hasError = await page.locator('text=/error|failed|something went wrong/i').first()
+  125 |             .isVisible({ timeout: 5000 }).catch(() => false);
+  126 |         expect(hasError).toBe(false);
+  127 | 
+  128 |         const content = page.locator('table, [role="table"], h1, h2, [role="heading"], .chakra-text').first();
+  129 |         await content.waitFor({ state: 'visible', timeout: 20000 });
+  130 |         console.log(`[PASS] Attendances page rendered without errors`);
+  131 |     });
+  132 | 
+  133 |     // -------------------------------------------------------------------------
+  134 |     // SECURITY & VALIDATION: Server response on Timesheet Creation with Invalid Employee ID
+  135 |     // -------------------------------------------------------------------------
+  136 |     test('Guardrail: Server must validate employee_id and return 422 (not 500 with SQL leak)', async ({ page }) => {
+  137 |         const app = new AppManager(page);
+  138 |         await app.login(process.env.BEFFA_USER, process.env.BEFFA_PASS);
+  139 | 
+  140 |         const INVALID_EMPLOYEE_ID = '00000000-dead-beef-0000-000000000000';
+  141 |         const token = await app._getAuthToken();
+  142 |         const headers = {
+  143 |             'Authorization': `Bearer ${token}`,
+  144 |             'x-company': process.env.BEFFA_COMPANY as string,
+  145 |             'Content-Type': 'application/json',
+  146 |         };
+  147 |         const params = `year=${process.env.BEFFA_YEAR || '2019'}&period=${process.env.BEFFA_PERIOD || 'yearly'}&calendar=${process.env.BEFFA_CALENDAR || 'ec'}`;
+  148 | 
+  149 |         console.log(`[ATTACK] Submitting timesheet creation with non-existent employee ID: ${INVALID_EMPLOYEE_ID}...`);
+  150 |         const response = await page.request.post(
+  151 |             `${app.apiBase}/timesheets?${params}`,
+  152 |             {
+  153 |                 headers,
+  154 |                 data: {
+  155 |                     employee_id: INVALID_EMPLOYEE_ID,
+  156 |                     date: '2026-09-03T00:00:00Z',
+  157 |                     hours: 8,
+  158 |                     description: 'Invalid Employee Security Probe'
+  159 |                 }
+  160 |             }
+  161 |         );
+  162 | 
+  163 |         const status = response.status();
+  164 |         const responseText = await response.text();
+  165 | 
+  166 |         console.log(`[RESPONSE] Status Code: ${status}`);
+  167 |         console.log(`[RESPONSE] Body: ${responseText}`);
+  168 | 
+  169 |         // Check for raw SQL leaks
+  170 |         const leaksRawSQL = /SQLSTATE|fk_employees_timesheets|violates foreign key constraint|insert or update on table/i.test(responseText);
+  171 | 
+  172 |         // Audit Table Output
+  173 |         const W = { l: 36, v: 38 };
+  174 |         const pad = (s: string, n: number) => s.length >= n ? s.substring(0, n - 1) + '…' : s.padEnd(n);
+  175 |         const line = '─'.repeat(W.l + W.v + 7);
+  176 | 
+  177 |         console.log(`\n  ┌${line}┐`);
+  178 |         console.log(`  │ ${pad('Invalid Employee Timesheet Validation Audit', W.l + W.v + 3)} │`);
+  179 |         console.log(`  ├${line}┤`);
+  180 |         console.log(`  │ ${pad('Tested Employee ID', W.l)} │ ${pad(INVALID_EMPLOYEE_ID, W.v)} │`);
+  181 |         console.log(`  │ ${pad('Expected Status', W.l)} │ ${pad('422 Unprocessable Entity', W.v)} │`);
+  182 |         console.log(`  │ ${pad('Actual HTTP Status', W.l)} │ ${pad(`${status} ${status === 500 ? '(INTERNAL SERVER ERROR)' : ''}`, W.v)} │`);
+  183 |         console.log(`  │ ${pad('Exposes Raw SQL / FK Constraint', W.l)} │ ${pad(leaksRawSQL ? 'YES (SECURITY DEFECT)' : 'No (Clean Response)', W.v)} │`);
+  184 |         console.log(`  ├${line}┤`);
+  185 | 
+  186 |         const isCompliant = status === 422 && !leaksRawSQL;
+  187 |         const verdict = isCompliant ? 'PASS — Clean 422 Validation Error' : `FAIL — ${status === 500 ? 'HTTP 500 Unhandled Error' : 'Validation Defect'}`;
+  188 | 
+  189 |         console.log(`  │ ${pad('Result', W.l)} │ ${pad(verdict, W.v)} │`);
+  190 |         console.log(`  └${line}┘\n`);
+  191 | 
+  192 |         if (status === 500 || leaksRawSQL) {
+> 193 |             throw new Error(
+      |                   ^ Error: [TIMESHEET_INVALID_EMPLOYEE_BUG] Server failed validation on invalid employee_id.
+  194 |                 `[TIMESHEET_INVALID_EMPLOYEE_BUG] Server failed validation on invalid employee_id.\n` +
+  195 |                 `  HTTP Status: ${status} (Expected: 422)\n` +
+  196 |                 `  Raw SQL Exposed: ${leaksRawSQL}\n` +
+  197 |                 `  Response Body: ${responseText}\n` +
+  198 |                 `  Fix Required: Pre-validate employee_id exists before executing database INSERT to avoid SQLSTATE 23503 crash.`
+  199 |             );
+  200 |         }
+  201 | 
+  202 |         expect(status, 'Must return 422 Unprocessable Entity').toBe(422);
+  203 |         expect(leaksRawSQL, 'Must not leak raw SQL / DB foreign key constraints').toBe(false);
+  204 |     });
+  205 | });
+  206 | 
+  207 | 
+```

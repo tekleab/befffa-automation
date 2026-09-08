@@ -1,0 +1,30 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+10:15:39 [PERFORMANCE] API - Auth API Verification: 294.37ms
+[AUTH] Session token and local storage injected successfully.
+[ADJ] quantity | qty=50 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/009083 (ID: 46d7b776-62f4-4ad5-8d77-e434bcf79a9f)
+10:15:54 [INFO] Advancing inventory-adjustments "46d7b776-62f4-4ad5-8d77-e434bcf79a9f"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 50...
+[SUCCESS] API Confirmed: Stock correctly reached 50.
+[FRESH ITEM] Created: FIFO-Item-1788862550651 (d8b09e76-365d-492b-9417-c7c66c95ac6d) | method=FIFO | stock=50@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+[ADJ] quantity | qty=50 @ $80 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/009084 (ID: d61c6ecb-6b06-4c24-a734-4063468b9807)
+10:16:02 [INFO] Advancing inventory-adjustments "d61c6ecb-6b06-4c24-a734-4063468b9807"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 50...
+[SUCCESS] API Confirmed: Stock correctly reached 50.
+[FRESH ITEM] Created: FIFO-Item-1788862558804 (c2fa4f31-9352-4244-bb4c-ef18312a90bb) | method=FIFO | stock=50@$80 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+10:16:05 [INFO] [STOCK_TOPUP] Injecting 70 units for item d8b09e76-365d-492b-9417-c7c66c95ac6d...
+[ADJ] quantity | qty=70 @ $100 | current=50 loc=0
+10:16:06 [WARN] [STOCK_TOPUP] Adjustment creation failed: {  "code": 422,  "details": {   "location_id": [    "Item doesn't exist in given location."   ]  },  "message": "Validation error when creating inventory adjustment" } 
+10:16:06 [INFO] [STOCK_TOPUP] Injecting 70 units for item d8b09e76-365d-492b-9417-c7c66c95ac6d...
+[ADJ] quantity | qty=70 @ $100 | current=50 loc=0
+10:16:07 [WARN] [STOCK_TOPUP] Adjustment creation failed: {  "code": 422,  "details": {   "location_id": [    "Item doesn't exist in given location."   ]  },  "message": "Validation error when creating inventory adjustment" } 
+10:16:07 [INFO] [STOCK_TOPUP] Injecting 70 units for item d8b09e76-365d-492b-9417-c7c66c95ac6d...
+[ADJ] quantity | qty=70 @ $100 | current=50 loc=0
+10:16:08 [WARN] [STOCK_TOPUP] Adjustment creation failed: {  "code": 422,  "details": {   "location_id": [    "Item doesn't exist in given location."   ]  },  "message": "Validation error when creating inventory adjustment" } 
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+10:16:19 [PERFORMANCE] API - Auth API Verification: 423.35ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+[AUDIT] Lines sum: $460 | Invoice total: $0 | Expected: $460
+[PASS] Multi-line Invoice totals correct

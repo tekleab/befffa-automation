@@ -1,0 +1,42 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+10:14:12 [PERFORMANCE] API - Auth API Verification: 263.79ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+10:14:20 [INFO] Picking date: "Purchase Order Date" → target 2026-9-8
+10:14:22 [WARN] "Purchase Order Date" — target day 8 not found, picked early enabled: 1.
+10:14:22 [PERFORMANCE] UI - Pick Date: Purchase Order Date: 2715.55ms
+[SELECT-OPTION] Vendor (attempt 1): overlayVisible=true, count=21
+10:14:25 [PERFORMANCE] UI - Random Selection: Vendor: 2592.11ms
+[SELECT-OPTION] Accounts Payable (attempt 1): overlayVisible=true, count=21
+10:14:28 [PERFORMANCE] UI - Random Selection: Accounts Payable: 2927.29ms
+[SELECT-OPTION] Purchase Type (attempt 1): overlayVisible=true, count=12
+10:14:30 [PERFORMANCE] UI - Random Selection: Purchase Type: 2365.19ms
+[API PRE-CAPTURE] Using guaranteed-stock item "FIFO-Item-1788862362343" @ $100
+[ITEM MODAL] Clicking item option: "FIFO-Item-1788862362343"
+[ITEM MODAL] Item selected status: true | Button text: "FIFO-Item-1788862362343"
+[SELECT-OPTION] Warehouse (attempt 1): overlayVisible=true, count=4
+10:14:38 [PERFORMANCE] UI - Random Selection: Warehouse: 1999.01ms
+[SELECT-OPTION] Location (attempt 1): overlayVisible=true, count=4
+10:14:41 [PERFORMANCE] UI - Random Selection: Location: 1996.31ms
+[MODAL] Item branch - G/L selector visible: true
+[SELECT-OPTION] G/L Account (attempt 1): overlayVisible=true, count=20
+10:14:44 [PERFORMANCE] UI - Random Selection: G/L Account: 2327.28ms
+[MODAL] Filled Quantity: 4
+[SELECT-OPTION] Tax (attempt 1): overlayVisible=true, count=8
+10:14:47 [PERFORMANCE] UI - Random Selection: Tax: 2294.05ms
+[MODAL] Item line item added successfully
+[ITEM MODAL] Clicking item option: "FIFO-Item-1788862362343"
+[ITEM MODAL] Item selected status: true | Button text: "FIFO-Item-1788862362343"
+[SELECT-OPTION] Warehouse (attempt 1): overlayVisible=true, count=4
+10:14:55 [PERFORMANCE] UI - Random Selection: Warehouse: 1940.16ms
+[SELECT-OPTION] Location (attempt 1): overlayVisible=true, count=4
+10:14:58 [PERFORMANCE] UI - Random Selection: Location: 2254.43ms
+[MODAL] Item branch - G/L selector visible: true
+[SELECT-OPTION] G/L Account (attempt 1): overlayVisible=true, count=20
+10:15:01 [PERFORMANCE] UI - Random Selection: G/L Account: 2291.95ms
+[MODAL] Filled Quantity: 1
+[SELECT-OPTION] Tax (attempt 1): overlayVisible=true, count=8
+10:15:04 [PERFORMANCE] UI - Random Selection: Tax: 2248.83ms
+[MODAL] Item line item added successfully
+[AUDIT] 30 lines in PO form table
+[PASS] PO 0deaa68f-334e-472f-8fd1-cc42f608be07 mixed lines created and navigated to detail page

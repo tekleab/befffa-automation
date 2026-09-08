@@ -1,0 +1,13 @@
+10:00:50 [PERFORMANCE] API - Auth API Verification: 415.83ms
+[AUTH] Session token and local storage injected successfully.
+[ADJ] quantity | qty=50 @ $100 | current=0 loc=0
+[SUCCESS] Adjustment created via API: ADJ/2026/09/08/009029 (ID: 4289d3d9-6ad1-4010-8540-97e354850d9b)
+10:00:58 [INFO] Advancing inventory-adjustments "4289d3d9-6ad1-4010-8540-97e354850d9b"...
+[ACTION] API Polling: Waiting for stock at location 539ab667-5559-4db7-8cd4-24f797d57ebb to hit 50...
+[SUCCESS] API Confirmed: Stock correctly reached 50.
+[FRESH ITEM] Created: FIFO-Item-1788861654516 (4ab71717-efd9-4f8a-b4fe-04e794a42c1e) | method=FIFO | stock=50@$100 | loc=539ab667-5559-4db7-8cd4-24f797d57ebb
+10:01:01 [PERFORMANCE] API - Auth API Verification: 405.45ms
+[AUTH] Session token and local storage injected successfully.
+[AUTH] Reusing cached signed-in session state — skipping login navigation.
+[ATTACK] Injecting bounds-breaking discount: -3500 on 1000 invoice
+10:01:06 [INFO] Advancing invoices "d57a9df7-f3d2-45b6-8de9-c0ea0827a8bb"...

@@ -1,0 +1,5 @@
+10:10:28 [PERFORMANCE] API - Auth API Verification: 424.45ms
+[AUTH] Session token and local storage injected successfully.
+[TICKET 4] Testing Receipt Detail DTO Schema...
+[RECEIPT DTO CONTRACT]: {"amount":100,"cash_account":null,"cash_disbursement_journal":{"credit":100,"debit":100,"journal_date":"2026-10-22T00:00:00Z","journal_entries":[{"account":{"account_id":"","id":"bd0e0b51-b32d-4925-b442-05a3e63abf16","name":""},"credit":100,"debit":0,"description":"INV/2026/08/05/000577 invoice rece
+[PASS] Ticket 4 — Receipt Detail DTO Schema Validated!

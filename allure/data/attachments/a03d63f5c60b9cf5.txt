@@ -1,0 +1,6 @@
+10:06:49 [PERFORMANCE] API - Auth API Verification: 418.27ms
+[AUTH] Session token and local storage injected successfully.
+[STEP 1] Creating item via API for view verification...
+[OK] Item created via API: VIEW-AUDIT-1788862009468 (ID: dcc036bc-90af-4c3a-a82e-4846499951c5)
+[STEP 2] Verifying item fields via API...
+[PASS] Item "VIEW-AUDIT-1788862009468" confirmed via API. Stock=0, Cost=150

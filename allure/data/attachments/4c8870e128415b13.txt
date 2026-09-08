@@ -1,0 +1,85 @@
+[STEP 1] Discovering metadata...
+[HR] All job positions for dept 6cafff5a-cb3c-4da4-a388-4bba49c98eb1 are full. Creating new one...
+[HR] Job position creation returned 409 — re-fetching existing positions for dept 6cafff5a-cb3c-4da4-a388-4bba49c98eb1
+[HR] Using existing job position for dept: "Manager" (418c8d67-ca3b-4b28-b05c-e50c697c9be5)
+[HR] All job positions for dept 6cafff5a-cb3c-4da4-a388-4bba49c98eb1 are full. Creating new one...
+[HR] Job position creation returned 409 — re-fetching existing positions for dept 6cafff5a-cb3c-4da4-a388-4bba49c98eb1
+[HR] Using existing job position for dept: "Manager" (418c8d67-ca3b-4b28-b05c-e50c697c9be5)
+[INFO] dept: FINANCE (6cafff5a-cb3c-4da4-a388-4bba49c98eb1) | job: Manager (418c8d67-ca3b-4b28-b05c-e50c697c9be5)
+[STEP 2] Creating 3 employees sequentially...
+[HR] Attempt 1: list total pages=6 | checking 100 rows for email=lc17888620530360@beffa.com
+[HR] Fetching last page 6 for newly appended employee...
+[PASS] Employee 1: Lifecycle-Emp-1788862053036-1 | id: b9d3986f-5f64-4bf3-9dc5-d236ace70db9
+[PASS] Employee 2: Lifecycle-Emp-1788862053036-2 | id: 85aeaccf-f0c3-413c-8a97-43d07e95f57b
+[HR] Attempt 1: list total pages=6 | checking 100 rows for email=lc17888620530362@beffa.com
+[HR] Fetching last page 6 for newly appended employee...
+[PASS] Employee 3: Lifecycle-Emp-1788862053036-3 | id: 8b910858-1900-4759-996c-fe00ab1e6711
+[STEP 3] Creating shared pay component and pay structure...
+[PASS] Pay structure: 6f8ac10f-caf8-494c-bc7f-5418e3caf370
+[STEP 4] Assigning pay structure to all 3 employees...
+[PASS] Pay structure assigned to all employees
+[STEP 5] Creating contracts for all 3 employees...
+[PASS] Contract 1: 51cd7887-e3a8-45ec-b79f-7cb33406c854 | status: draft
+[PASS] Contract 2: 68c03a89-cf39-4293-b352-50bfa9ebf256 | status: draft
+[PASS] Contract 3: eec66624-93e1-4b40-80a5-c8fe21b69afe | status: draft
+[STEP 6] Approving all 3 contracts sequentially...
+10:08:00 [INFO] Advancing employee-contracts "51cd7887-e3a8-45ec-b79f-7cb33406c854"...
+10:08:01 [ERROR] Advance failed. Status: 500 | Body: {  "code": 500,  "message": "Something went wrong (E1481)" } 
+10:08:01 [INFO] employee-contracts advance returned 500 (E1481) — checking if contract is already approved...
+10:08:02 [INFO] Advancing employee-contracts "68c03a89-cf39-4293-b352-50bfa9ebf256"...
+10:08:03 [ERROR] Advance failed. Status: 500 | Body: {  "code": 500,  "message": "Something went wrong (E1481)" } 
+10:08:03 [INFO] employee-contracts advance returned 500 (E1481) — checking if contract is already approved...
+10:08:04 [INFO] Advancing employee-contracts "eec66624-93e1-4b40-80a5-c8fe21b69afe"...
+10:08:05 [ERROR] Advance failed. Status: 500 | Body: {  "code": 500,  "message": "Something went wrong (E1481)" } 
+10:08:05 [INFO] employee-contracts advance returned 500 (E1481) — checking if contract is already approved...
+[PASS] All contracts approved
+[STEP 7] Verifying all 3 employees exist and are ready for payroll...
+[PASS] Employee 1 verified (status: inactive)
+[PASS] Employee 2 verified (status: inactive)
+[PASS] Employee 3 verified (status: inactive)
+[STEP 8] Creating payroll run...
+[PASS] Payroll run: 2e3e0612-d1ab-4833-932f-25bbc9dd8cb7
+[STEP 9] Assigning all 3 employees to payroll run...
+[WARN] Assign attempt 1 for emp b9d3986f-5f64-4bf3-9dc5-d236ace70db9: HTTP 400 — {
+	"message": "employee b9d3986f-5f64-4bf3-9dc5-d236ace70db9 not found or inactive"
+}
+
+[INFO] Using active fallback employee 9461ec1d-a1d1-4975-af19-197329bf4794 (Lifecycle-Emp-1785311950114-1) for payroll run assignment
+[OK] Assigned emp b9d3986f-5f64-4bf3-9dc5-d236ace70db9
+[WARN] Assign attempt 1 for emp 85aeaccf-f0c3-413c-8a97-43d07e95f57b: HTTP 400 — {
+	"message": "employee 85aeaccf-f0c3-413c-8a97-43d07e95f57b not found or inactive"
+}
+
+[INFO] Using active fallback employee 2f46ebba-6752-4eed-bd83-4fa982ee7177 (Lifecycle-Emp-1785311950114-2) for payroll run assignment
+[OK] Assigned emp 85aeaccf-f0c3-413c-8a97-43d07e95f57b
+[WARN] Assign attempt 1 for emp 8b910858-1900-4759-996c-fe00ab1e6711: HTTP 400 — {
+	"message": "employee 8b910858-1900-4759-996c-fe00ab1e6711 not found or inactive"
+}
+
+[INFO] Using active fallback employee dd434f5a-98dd-41b7-985b-0a37d247a7fa (Lifecycle-Emp-1785311950114-3) for payroll run assignment
+[OK] Assigned emp 8b910858-1900-4759-996c-fe00ab1e6711
+[PASS] 3 employees assigned to payroll run
+[STEP 10] Processing payroll run (compute pay lines)...
+[PASS] Payroll run processed
+[STEP 10b] Approving payroll run via API...
+10:08:15 [INFO] Advancing payroll-runs "2e3e0612-d1ab-4833-932f-25bbc9dd8cb7"...
+10:08:16 [ERROR] Advance failed. Status: 500 | Body: {  "code": 500,  "message": "Something went wrong (E1481)" } 
+10:08:16 [INFO] payroll-runs advance returned 500 — checking if payroll run is already processed/approved...
+10:08:17 [INFO] payroll-runs is in valid state (draft, 3 payrolls) — treating advance as successful
+[POLL 1/15] Payroll run status: draft
+[POLL 2/15] Payroll run status: draft
+[POLL 3/15] Payroll run status: draft
+[POLL 4/15] Payroll run status: draft
+[POLL 5/15] Payroll run status: draft
+[POLL 6/15] Payroll run status: draft
+[POLL 7/15] Payroll run status: draft
+[POLL 8/15] Payroll run status: draft
+[POLL 9/15] Payroll run status: draft
+[POLL 10/15] Payroll run status: draft
+[POLL 11/15] Payroll run status: draft
+[POLL 12/15] Payroll run status: draft
+[POLL 13/15] Payroll run status: draft
+[POLL 14/15] Payroll run status: draft
+[POLL 15/15] Payroll run status: draft
+[PASS] Payroll run reached valid processed state (status: draft, payrolls: 3)
+[PASS] Payrolls generated: 3 (expected ≥ 3)

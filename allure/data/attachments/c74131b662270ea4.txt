@@ -1,0 +1,5 @@
+10:10:10 [PERFORMANCE] API - Auth API Verification: 426.22ms
+[AUTH] Session token and local storage injected successfully.
+[BDEV-1139] Testing Bank Statements Pagination...
+[BDEV-1139] Bank Statements returned 1 items | Total: 1
+[PASS] BDEV-1139 Bank Statements Pagination verified (Total Statements: 1)

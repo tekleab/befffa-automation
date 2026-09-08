@@ -1,0 +1,2 @@
+[RESULT] Fake company: status=400
+[PASS] Fake company correctly rejected — no data leaked

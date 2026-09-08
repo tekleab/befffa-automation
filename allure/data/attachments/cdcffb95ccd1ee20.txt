@@ -1,0 +1,16 @@
+10:10:45 [PERFORMANCE] API - Auth API Verification: 421.45ms
+[AUTH] Session token and local storage injected successfully.
+[GLOBAL API AUDIT] Auditing Global Toast Notification Container & Backend API Error Responses...
+[GLOBAL API AUDIT] Response Status: 422
+[GLOBAL API AUDIT] Raw Server Payload: "{
+	"code": 422,
+	"details": {
+		"accounts_receivable_id": [
+			"Account Receivable is required."
+		],
+		"customer_id": [
+			"Customer is required."
+		],
+		"so_items": [
+			"Add atleast one sales order"
+[GLOBAL API AUDIT] UI Toast Region Present in DOM: false

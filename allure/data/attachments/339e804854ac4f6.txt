@@ -1,0 +1,8 @@
+
+=======================================================
+  [RECEIPT API] 2. Guardrail: Empty/Invalid Payload Test 
+=======================================================
+[ATTACK PAYLOAD] POST /api/receipts with empty/null fields: {"customer_id":null,"amount":0,"cash_account_id":null}
+[HTTP RESPONSE] Status Code: 422
+[VALIDATION AUDIT] Receipt Creation with Empty/Null Payload → Status 422 (CODE_MESSAGE): "Validation error when creating Receipt"
+[DIAGNOSTIC STATUS] ✅ Guardrail operational. Server rejected payload with HTTP 422

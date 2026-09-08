@@ -1,0 +1,16 @@
+10:10:23 [PERFORMANCE] API - Auth API Verification: 411.08ms
+[AUTH] Session token and local storage injected successfully.
+
+-----------------------------------------------------------------
+[DTO AUDIT START] Model: Warehouse
+-----------------------------------------------------------------
+  |- [LIST ENDPOINT] GET /warehouses
+  |- [LIST STATUS]   HTTP 200 (SUCCESS)
+  |- [ENTITY ID]     ae638681-f2ae-492a-898e-edab3be6186b
+  |- [DETAIL ROUTE]  GET /warehouses/ae638681-f2ae-492a-898e-edab3be6186b
+  |- [PERFORMANCE]   191 ms (OPTIMIZED)
+  |- [HTTP STATUS]   HTTP 200
+  |- [DTO SAMPLE]    {"address":{"kebele":"1","region":"Addis Ababa City Administration","woreda":"Woreda 2","zone":"Bole Subcity"},"id":"ae638681-f2ae-492a-898e...
+  |- [STATUS] [PASS] Warehouse DTO Detail Optimization Validated Successfully
+-----------------------------------------------------------------
+

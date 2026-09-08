@@ -1,0 +1,7 @@
+[DateHelper] Resolved in-period date: 2026-09-08T00:00:00Z (day=8, ecYear=2019)
+10:07:25 [PERFORMANCE] API - Auth API Verification: 242.59ms
+[AUTH] Session token and local storage injected successfully.
+[HR] Attempt 1: list total pages=6 | checking 100 rows for email=dup.1788862046272.ct53r@beffa.com
+[HR] Fetching last page 6 for newly appended employee...
+[INFO] First employee created: e775d0bf-7391-402c-abaf-1cd8baef4753
+[PASS] Duplicate email correctly rejected: 422
