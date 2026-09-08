@@ -1,29 +1,37 @@
 {
   "total": 18,
-  "passed": 17,
-  "failed": 1,
+  "passed": 18,
+  "failed": 0,
   "skipped": 0,
-  "passRate": 94.4,
-  "avgDurationMs": 372,
-  "lastUpdated": "2026-09-08T09:52:41.406Z",
+  "passRate": 100,
+  "avgDurationMs": 359,
+  "lastUpdated": "2026-09-08T09:56:30.052Z",
   "moduleBreakdown": [
     {
       "module": "Other",
-      "passed": 17,
-      "failed": 1,
+      "passed": 18,
+      "failed": 0,
       "skipped": 0,
       "trend": [
-        95.7,
         83.1,
         82.8,
         94.4,
         87.7,
         86.8,
-        94.4
+        94.4,
+        100
       ]
     }
   ],
   "last10Runs": [
+    {
+      "run": "747",
+      "commit": "26614a2",
+      "trigger": "push (sanity)",
+      "duration": "0m 6s",
+      "passRate": 100,
+      "status": "success"
+    },
     {
       "run": "746",
       "commit": "62d9859",
@@ -95,24 +103,7 @@
       "duration": "81m 35s",
       "passRate": 89.2,
       "status": "success"
-    },
-    {
-      "run": "732",
-      "commit": "65bb6c5",
-      "trigger": "push (smoke)",
-      "duration": "11m 40s",
-      "passRate": 100,
-      "status": "success"
     }
   ],
-  "criticalBlockers": [
-    {
-      "severity": "medium",
-      "title": "API: /users/login endpoint accepts POST",
-      "error": "Error: Login endpoint returned unexpected status 201\n\n\u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m201\u001b[39m\nReceived ar",
-      "firstSeen": "2026-09-08T09:52:28.288Z",
-      "occurrences": 1,
-      "allureUrl": "https://tekleab.github.io/beffa-automation/allure/#behaviors"
-    }
-  ]
+  "criticalBlockers": []
 }
